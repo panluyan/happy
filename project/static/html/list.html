@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<!--主题色-->
+<link title="black" href="../css/baseBlack.css" rel="stylesheet">
+<link title="black" href="../css/styleBlack.css" rel="stylesheet">
+<title>happy</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse navbar-right" id="navbarCollapse">
+    <ul class="nav navbar-nav" id="styles">
+    	<li class="blue active"><a href="#">blue</a></li>
+    	<li class="black"><a href="#">black</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="list.html"><span class="glyphicon glyphicon-home"></span>设备性能列表</a></li>
+		  <li><a href="group.html">
+            <span class="glyphicon glyphicon-retweet"></span>分组设备管理</a>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="#">一级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+          </ol>
+      </li>
+      <li><a href="base.html"><span class="glyphicon glyphicon-home"></span>base页面</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>
+		</ul>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">设备性能列表</div>
+     <!--table-->
+    <div class="bgGray">
+    <!--自定义toolbar-->
+      <div id="toolbar">
+        <div class="form-inline formBox">
+           <div class="input-group">
+             <select class="selectpicker" data-live-search="true" title="部门">
+                <option>option1</option>
+                <option>option2</option>
+                <option>option3</option>                
+             </select>
+           </div>
+           <div class="input-group">
+             <select class="selectpicker" data-live-search="true" title="IDC">
+                <option>option1</option>
+                <option>option2</option>
+                <option>option3</option>                
+             </select>
+           </div>
+           <div class="input-group">
+             <select class="selectpicker" data-live-search="true" title="分组">
+                <option>option1</option>
+                <option>option2</option>
+                <option>option3</option>                
+             </select>
+           </div>
+           <div class="input-group">
+             <select class="selectpicker" data-live-search="true" title="IP批量查询" multiple>
+                <option>option1</option>
+                <option>option2</option>
+                <option>option3</option>
+                <option>option4</option>
+                <option>option5</option>
+                <option>option6</option>
+             </select>
+           </div>
+           <!--search-->
+           <div class="input-group searchMore">
+             <input class="form-control" type="text" placeholder="IP、部门、机房" x-webkit-speech/>
+             <span class="input-group-addon btn"><i class="glyphicon glyphicon-search"></i></span>
+           </div>
+           <!--button--> 
+           <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#myModal">IP批量查询</button>
+           <button type="submit" class="btn btn-success">查看性能详情</button>
+        </div><!--form-inline-->
+
+      </div><!--toolbar end-->
+
+      <!--table内容-->
+      <table class="table" id="table"
+             data-url="http://issues.wenzhixin.net.cn/examples/bootstrap_table/data" 
+             data-height=""
+             data-click-to-select="true"
+             data-pagination="true"
+             data-side-pagination="server"
+             data-page-list="[10, 20, 50, 100, 200]"
+             data-search="true"
+             data-show-refresh="true"
+             data-show-columns="true"
+             data-toolbar="#toolbar"
+             data-sort-name="name" 
+             data-sort-order="asc">
+        <thead>
+          <tr>
+            <th data-field="state" data-checkbox="true"></th>
+            <th data-field="id" data-sortable="true">Item ID</th>
+            <th data-field="name" data-sortable="true" data-sorter="startSorter">Item Name</th>
+            <th data-field="price" data-sortable="true">Item Price</th>
+            <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+<!--底部-->
+<div class="footer"><p><a href="#">link1</a><a href="#">link2</a><a href="#">link3</a></p></div>
+<!--模态-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bgGray">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">IP批量查询</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row mb0">
+                <div class="col-sm-12">
+                  <textarea class="form-control" rows="6" placeholder="请输入你要查询的ip"></textarea>
+                </div>
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">提交</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+        </div> 
+</div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--图表
+<script src="../libs/echarts/echarts.min.js"></script>
+<script src="../libs/echarts/theme/shine.js"></script>
+<script src="../libs/echarts/theme/happy.js"></script>-->
+<script>
+//操作列方法
+function actionFormatter(value, row, index) {
+    return [
+        '<a class="edit ml" href="javascript:void(0)" title="Edit">',
+        '<i class="glyphicon glyphicon-edit"></i>',
+        '</a>',
+        '<a class="remove ml" href="javascript:void(0)" title="Remove">',
+        '<i class="glyphicon glyphicon-remove"></i>',
+        '</a>'
+    ].join('');
+}
+window.actionEvents = {
+    'click .like': function (e, value, row, index) {
+        alert('You click like icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .edit': function (e, value, row, index) {
+        alert('You click edit icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .remove': function (e, value, row, index) {
+        alert('You click remove icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    }
+};
+
+$(document).ready(function(){
+  //下拉菜单
+  $(".selectpicker").selectpicker;
+  //table
+  $('#table').bootstrapTable({
+      //data: data
+      url:"http://issues.wenzhixin.net.cn/examples/bootstrap_table/data",
+      pageSize: 20,
+      //table loading
+      formatLoadingMessage: function () {
+        return "<span class='fa fa-spinner fa-spin'></span>";
+      }      
+  });
+
+  function startSorter(a,b){
+    if (a < b) return 1;
+    if (a > b) return -1;
+    return 0;
+  };
+  //时间datatimepicker
+  $("#datetimepicker1").datetimepicker();
+ //toolbar响应式
+  tool_Bar();
+
+
+
+
+
+
+
+})
+</script>
+</body>
+</html>
+

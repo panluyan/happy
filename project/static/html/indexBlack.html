@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/baseBlack.css" rel="stylesheet">
+<link href="../css/styleBlack.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<title>happy</title>
+<style>
+  /*toolbar处理
+  .fixed-table-toolbar .bs-bars, .fixed-table-toolbar .columns, .fixed-table-toolbar .search{margin-bottom: 0px;}
+  .fixed-table-toolbar .bs-bars .form-inline > button.btn,.fixed-table-toolbar .bs-bars .input-group{ margin-bottom: 0px;}
+
+  .fixed-table-toolbar .pull-right{ }
+  .formBox{ margin-bottom: 10px;}
+  .form-box2,.formBox{ background-color: #1f1d1d; padding: 10px;}
+  .form-box2 .btn{}
+  */
+  /*定义滚动条*/
+  ::-webkit-scrollbar{}    
+  /*定义滚动条轨道 内阴影+圆角*/  
+  ::-webkit-scrollbar-track{}    
+  /*定义滑块 内阴影+圆角*/  
+  ::-webkit-scrollbar-thumb{} 
+  /* 滚动条背景基本样式 
+  scrollbar{
+  -moz-appearance: none !important;
+  background-color: transparent !important;/* 滚动条背景透明 
+  background-image: none !important; /* 滚动条背景图案不显示 
+  position: relative !important; /* 更改滚动条的定位方式为相对 
+  overflow: hidden !important;
+  z-index: 999999999 !important; /* 把滚动条提到Z轴最上层 
+  }*/
+
+  /* 滚动条按钮基本样式 
+  scrollbar thumb{
+  -moz-appearance: none !important;
+  background-color: rgba(0,100,255,.25) !important;
+  border-radius: 0px !important;
+  border: 1px !important; /* 滚动条按钮边框 
+  border-color: rgba(0,100,255,.1) !important;  /* 滚动条按钮边框颜色和透明度 
+  }*/
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav">
+      <li><a>菜单1</a></li>
+      <li><a>菜单2</a></li>
+      <li><a>菜单3</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li class="dropdown envelope">
+         <a href="#" data-toggle="dropdown" aria-expanded="true">
+             <i class="glyphicon glyphicon-envelope"></i><span class="badge">4</span>
+         </a>
+         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li><p>发布成功！</p></li>
+         </ul>
+      </li>
+      <li class="dropdown">
+         <a href="#" data-toggle="dropdown" aria-expanded="true">
+             <i class="glyphicon glyphicon-user"></i>panluyan_yhd <b class="caret"></b>
+         </a>
+         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li><a href="">退出</a></li>
+         </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu bgGray" id="sideMenu">
+		<ul>
+		  <li><a href="#" class="active"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span> 资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="#">资源利用率1</a></li>
+            <li><a href="#">资源利用率2</a></li>
+            <li><a href="#">资源利用率3</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2222</a></li>
+            <li><a href="#">3333</a></li>
+          </ol>
+      </li>
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">资源利用率</div>
+    <!--table-->
+    <div class="">
+
+    <!--自定义toolbar-->
+      <div id="toolbar">
+        <div class="form-inline formBox">
+          <div class="input-group">
+             <select class="selectpicker">
+               <option>option1</option>
+               <option>option2</option>
+               <option>option3</option>
+             </select>
+          </div>
+          <div class="input-group">
+             <select class="selectpicker" multiple title="多选">
+               <option>option1</option>
+               <option>option2</option>
+               <option>option3</option>
+             </select>
+          </div>
+          <div class="input-group">
+              <select class="selectpicker" title="分组">
+                <optgroup label="Picnic">
+                  <option>Mustard</option>
+                  <option>Ketchup</option>
+                  <option>Relish</option>
+                </optgroup>
+                <optgroup label="Camping">
+                  <option>Tent</option>
+                  <option>Flashlight</option>
+                  <option>Toilet Paper</option>
+                </optgroup>
+              </select>
+          </div>
+          <div class="input-group">
+             <select class="selectpicker" data-live-search="true" title="可搜可选">
+                <option>option1</option>
+                <option>option2</option>
+                <option>option3</option>                
+             </select>
+          </div>
+          <!--search-->
+          <div class="input-group search">
+             <input class="form-control" type="text"/>
+             <span class="input-group-addon btn"><i class="glyphicon glyphicon-search"></i></span>
+          </div>
+          <!--时间选择-->
+          <div class="input-group date" id="datetimepicker1">
+             <input type="text" class="form-control"/>
+             <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+             </span>
+          </div>
+          <!--button-->
+          <!--模态框-->
+          <button class="btn btn-default" data-toggle="modal" data-target="#myModal">模态框</button>
+          <!--折叠-->
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#myCollapse">折叠</button>
+
+          <!--右侧信息 sr-only-->
+          <button type="submit" class="btn btn-link fr">重置</button>
+          <a class="progress-box fr" href="#" data-toggle="tooltip" data-placement="top" title="查看详情log">
+          <div class="progress progress-striped active" style="margin-bottom:0px;">
+            <div class="progress-bar progress-bar-success" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 100%;">
+                <span class="">任务进行中...</span>
+            </div>
+          </div>
+        </a>
+
+
+          
+        </div>
+        <!--操作-->
+        <div class="form-inline form-box2">
+          <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-open"></i>下架</button>
+          <button type="submit" class="btn btn-primary" id="alert"><i class="glyphicon glyphicon-open"></i>维护</button>
+          <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-open"></i>操作</button>
+          <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-open"></i>回收</button>
+          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-open"></i>报废</button>
+       </div>
+
+
+        <!--collapse折叠-->
+        <div id="myCollapse" class="bgCollapse bgBlack  collapse">
+          <button type="button" class="close" aria-label="Close" data-dismiss="collapse"><span aria-hidden="true">&times;</span></button>
+          <h5 class="collapse-header">新增分组</h5>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="control-label">分组名称：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label">分组内机器数量：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label">硬件配置：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label">所在位置：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label">修改时间：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="control-label">操作：</label>
+              <input type="text" class="form-control"/>
+            </div>
+            <div class="form-group col-footer"><button class="btn btn-primary">提交</button><button class="btn btn-default">取消</button></div>
+          </form>
+        </div>
+        
+
+
+
+      </div><!--toolbar end-->
+      <!--  data-search="true"   -->
+      <!--table内容-->
+      <table class="table" id="table"
+             data-url="http://issues.wenzhixin.net.cn/examples/bootstrap_table/data" 
+             data-height=""
+             data-click-to-select="true"
+             data-pagination="true"
+             data-side-pagination="server"
+             data-page-list="[10, 20, 50, 100, 200]"
+             data-show-toggle="true"
+             data-show-columns="true"
+             data-show-refresh="true"
+             data-search="true"
+             data-toolbar="#toolbar"
+             data-sort-name="name" 
+             data-sort-order="asc">
+        <thead>
+          <tr>
+            <th data-field="state" data-checkbox="true"></th>
+            <th data-field="id" data-sortable="true">Item ID</th>
+            <th data-field="name" data-sortable="true" data-sorter="startSorter">Item Name</th>
+            <th data-field="price" data-sortable="true">Item Price</th>
+            <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
+            <th data-field="status" data-formatter="statusFormatter">status</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+<!--底部
+<div class="footer">
+  <p>
+  <a href="#">link1</a><a href="#">link2</a><a id="link" href="http://w3c.org" target="_blank">W3C 首页链接</a>  
+  </p>
+</div>-->
+<!--模态-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bgGray">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题 </h4>
+            </div>
+            <div class="modal-body">文本</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">提交</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+          </div>
+        </div> 
+</div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+<!--警告提示框-->
+<div class="alert alert-success alert-dismissable">
+  <button type="button" class="close">&times;</button>
+  成功！很好地完成提交！
+</div>
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--图表-->
+<script src="../libs/echarts/echarts.min.js"></script>
+<script src="../libs/echarts/theme/shine.js"></script>
+<script src="../libs/echarts/theme/happy.js"></script>
+<script>
+function statusFormatter(value, row, index) {
+  //标签
+  // if(index%3===0){
+  //     return '<span class="label label-success">已完成</span>';
+  //  }
+  //  else{
+  //     return '<span class="label label-danger">进行中</span>';
+  //  }
+
+  //进度条
+  // if(index%3===0){
+  //    return '<div class="progress">'+
+  //           '<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">'+
+  //            '<span class="sr-only">45% Complete</span>'+
+  //          '</div>'+
+  //          '</div>'
+  // }else{
+  //    return '<div class="progress">'+
+  //           '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">'+
+  //            '<span class="sr-only">100% Complete</span>'+
+  //          '</div>'+
+  //          '</div>'
+  // }
+
+  //动画
+  if( index%3===0){
+     return '<div class="cloud"></div>'
+  }else{
+     return ''
+  }
+ }
+//操作列方法
+function actionFormatter(value, row, index) {
+    return [
+        '<a class="like" href="javascript:void(0)" title="Like">',
+        '<i class="glyphicon glyphicon-heart"></i>',
+        '</a>',
+        '<a class="edit ml" href="javascript:void(0)" title="Edit">',
+        '<i class="glyphicon glyphicon-edit"></i>',
+        '</a>',
+        '<a class="remove ml" href="javascript:void(0)" title="Remove">',
+        '<i class="glyphicon glyphicon-remove"></i>',
+        '</a>'
+    ].join('');
+}
+window.actionEvents = {
+    'click .like': function (e, value, row, index) {
+        alert('You click like icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .edit': function (e, value, row, index) {
+        alert('You click edit icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .remove': function (e, value, row, index) {
+        alert('You click remove icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    }
+};
+
+$(document).ready(function(){
+  var offTop = $("#table").offset().top;
+  var height = $(window).height() - offTop + 150;
+  //table
+  $('#table').bootstrapTable({
+      height: height,
+      //data: data
+      url:"http://issues.wenzhixin.net.cn/examples/bootstrap_table/data",
+      pageSize: 20,
+      //table loading
+      formatLoadingMessage: function () {
+       return "<span class='fa fa-spinner fa-spin'></span>"; 
+      }   
+      
+  });
+
+  function startSorter(a,b){
+    if (a < b) return 1;
+    if (a > b) return -1;
+    return 0;
+  };
+
+  //tooltip
+  $("[data-toggle='tooltip']").tooltip();
+  //下拉菜单
+  $(".selectpicker").selectpicker;
+  //时间datatimepicker
+  $("#datetimepicker1").datetimepicker();
+  //collapse.close
+  $(".collapse .close").click(function(){
+    $(this).parent().removeClass("in")
+  });
+  //警告框动画
+  $(".alert button").click( function(){
+     $(".alert").removeClass("appear").addClass("disappear"); 
+    });
+  $("#alert").click( function(){
+    $(".alert").addClass("appear");
+  });
+  //toolbar响应式
+  
+      // 在新窗口, 打开页面  
+    document.getElementById('link').onclick = function(ev) {  
+        // 阻止浏览器默认动作 (页面跳转)  
+        //ev.preventDefault();  
+        // 在新窗口打开页面  
+        //window.open(this.href);  
+    }; 
+
+
+
+
+})
+</script>
+</body>
+</html>
+

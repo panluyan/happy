@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!--移动手机适配-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>
+ 展示告警与恢复信息 
+</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../libs/animate.css" rel="stylesheet">
+<!--主题色-->
+<link href="../css/baseWhite.css" rel="stylesheet">
+<link href="../css/styleWhite.css" rel="stylesheet">
+<style type="text/css">
+    .slimScrollDiv{ display: none;}
+    div.input-group.my-pull-right {
+            width: 54px;
+            float: right;
+            vertical-align:middle;
+    }
+    .table tr:hover td{
+       overflow: visible;
+       white-space: normal;
+   }
+    .table td {
+        word-wrap: break-word;
+        overflow: visible;
+        text-overflow: ellipsis;
+        /*white-space: nowrap;*/
+        white-space: normal;
+    }
+    .table th {
+        text-align: center;
+    }
+    .table > tbody > tr > td{
+        vertical-align: middle;
+    }
+    .navbar-brand{
+        width: 108px !important;
+    }
+    div.pull-right.search {
+            visibility: hidden;
+    }
+    .main{
+        padding-left: 20px !important;
+    }
+  .table{ margin-bottom: 0;}
+  .table > tbody > tr > td,.table > tbody > tr > th{ vertical-align: middle; border-left: 1px solid #ccc;}
+  .table.table-box{ border: 1px solid #ccc; }
+  .table.table-box>tbody>tr>td.td-box{ padding: 0; }
+  .table.table-box>tbody>tr>td:first-child{ font-weight: bold;}
+  .td-box .table tbody tr:first-child td{ border-top: none;}
+  .td-box .table tbody tr td:first-child{ border-left: none; }
+  .panel-primary{ border: none;}
+  .panel-primary .panel-heading{ background-color: #03A9F4;}
+  .panel .table > tbody > tr > td{ color: #333; border: none;}
+  .panel .table > tbody >tr:nth-of-type(even){ background-color: #f0f8ff;}
+
+  /*2018-11-22*/
+  body{ color: #fff; font-size: 13px; background-color:#191919;}
+  
+  .wrapper{ min-width: 1000px;}
+  .item{ position: relative; padding-left:170px;  margin-bottom: 25px;}
+
+  /*style1*/
+  /*.item .infor{ font-size: 18px; color: #fff; 
+  	width: 150px; height: 100%;
+  	position: absolute;  left: 0; top: 0; 
+  	text-align: center;
+		display: flex;
+    justify-content:center;
+    align-items: center;
+    background: -webkit-linear-gradient(#8869ff,  #16c6ff); 
+    background: -o-linear-gradient(#8869ff,  #16c6ff); 
+    background: -moz-linear-gradient(#8869ff,  #16c6ff); 
+    background: linear-gradient(#8869ff,  #16c6ff);
+
+   }
+  .item .infor h5{ font-size: 18px;  margin-bottom: 20px; }
+  .item .infor span{ font-family:  Impact; font-size: 24px; letter-spacing:3px; display: inline-block; width: 40px; height: 40px; line-height: 40px; background-color: #ff6969; 	
+  }*/
+
+  /*style2*/
+  .item .infor{ font-size: 18px; color: #fff; 
+  	width: 150px; height: 100%;
+  	position: absolute;  left: 0; top: 0; 
+  	text-align: center;
+		display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #303030;
+    
+   }
+  .item .infor h5{ font-size: 18px;  margin-bottom: 20px; }
+  .item .infor span{ font-family:  Impact; font-size: 24px; letter-spacing:3px; display: inline-block; 
+  	width: 80px; height: 80px; line-height: 80px; 
+  	position: relative;
+  	z-index: 0;
+ 		border-radius: 50%;
+    background: -webkit-linear-gradient(#8869ff,  #16c6ff);
+		background: -o-linear-gradient(#8869ff,  #16c6ff);
+		background: -moz-linear-gradient(#8869ff,  #16c6ff);
+		background: linear-gradient(#8869ff,  #16c6ff);
+
+  }
+	.item .infor span::after{
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    transform: scale(0.8);
+    border-radius: 50%;
+    background: #303030; 
+	}
+
+
+
+
+  .item .box{ width: 100%; background-color: #303030; }
+  .item .box .alert-text{color: #16c6ff; font-size: 24px; height: 120px; line-height: 120px; text-align: center;}
+  .item .box .alert-text span{
+  	font-size: 30px;
+    background: linear-gradient(90deg, #8070ff, #25baff);
+    background-clip: text;
+    -webkit-background-clip:text;
+    color: transparent;
+    margin-right: 10px;
+   }
+  .item .box .table td a{ text-decoration: underline;}
+  .item .box .table th{ color: #d9dada; text-align: left; border-bottom: 4px solid #191919;}
+	.item .box .table td{ color: #d9dada; border: none; border-bottom: 2px solid #191919;}
+	.item .box .table tbody>tr:hover { background-color: #555;}
+	.item .box .table .red{ color: #ff6969;}
+	.item .box .table .green{ color: #04d2a4;}
+	
+
+    
+</style>
+</head>
+<body>
+<div class="wrapper">
+   <!--主要内容-->
+  <div class="main" id="main">
+    
+		<div class="title" style="color: #fff; margin-bottom:25px;">展示告警与恢复数据，每分钟自动刷新（最近一次刷新时间：2018-11-22 10:16:46）</div>
+
+		<!--列表页面-->
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口up/down</h5><span>6</span></div></div>
+			<div class="box">
+				<table  class="table">
+					<thead>            
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="150">端口</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线    </th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="60">是否过滤</th> 
+					  	<th width="100">关键字</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>硬件异常</h5> <span>0</span></div></div>
+			<div class="box">
+				<div class="alert-text"><span class="fa fa-thumbs-up"></span>暂无告警！</div>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口流量</h5> <span>16</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">设备IP</th> 
+					  	<th width="150">端口</th>
+					  	<th width="100">流量大小</th>
+					  	<th width="80">带宽使用率</th>
+					  	<th width="60">IN/OUT</th>
+					  	<th width="70">设备角色</th>
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>专线和出口流量</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="140">专线/出口链路名称 </th> 
+					  	<th width="100">设备IP</th> 
+					  	<th width="150">端口</th>
+					  	<th width="100">流量大小</th>
+					  	<th width="80">带宽使用率</th>
+					  	<th width="60">IN/OUT</th>
+					  	<th width="50">业务线</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>BJS01-BGP(JDProxy)-CU </td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>预留</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>BJS01-BGP(JDProxy)-CU </td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>预留</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+	
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口CRC</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="150">端口</th> 
+					  	<th width="80">CRC增长率</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）	</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>7140/min</td> <td>	T0</td> <td>POD0</td> <td>预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>7140/min</td> <td>	T0</td> <td>POD0</td> <td>预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>设备探活</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD </th> 
+					  	<th width="50"> 业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="50">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="60">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td>T0</td> <td>POD0</td> <td>	预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td>T0</td> <td>POD0</td> <td>	预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+</div>
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/reset.js"></script>
+
+
+
+
+</body></html>

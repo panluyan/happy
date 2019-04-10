@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>
+ 展示告警与恢复信息 
+</title>
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/font-awesome.css" rel="stylesheet">
+<!--主题色-->
+
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-select.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-table.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-datetimepicker_002.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-datetimepicker.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/fileinput.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/theme.css" rel="stylesheet">
+
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/baseWhite.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/styleWhite.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/menu.css" rel="stylesheet">
+<link href="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/animate.css" rel="stylesheet">
+
+<style type="text/css">
+    .slimScrollDiv{ display: none;}
+    div.input-group.my-pull-right {
+            width: 54px;
+            float: right;
+            vertical-align:middle;
+    }
+    .table tr:hover td{
+       overflow: visible;
+       white-space: normal;
+   }
+    .table td {
+        word-wrap: break-word;
+        overflow: visible;
+        text-overflow: ellipsis;
+        /*white-space: nowrap;*/
+        white-space: normal;
+    }
+    .table th {
+        text-align: center;
+    }
+    .table > tbody > tr > td{
+        vertical-align: middle;
+    }
+    .navbar-brand{
+        width: 108px !important;
+    }
+    div.pull-right.search {
+            visibility: hidden;
+    }
+    .main{
+        padding-left: 20px !important;
+    }
+    .class1{
+        word-wrap: break-word;word-break:break-all;
+        width: 50px;
+        text-align: center;
+        height: 20px;
+    }
+    .class2{
+        text-align: center;
+        width: 30px;
+        height: 30px;
+    }
+    .class3{
+        text-align: center;
+        word-wrap: break-word;word-break:break-all;
+        width: 100px;
+        height: 20px;
+    }
+    .class4{
+        text-align: center;
+        font-size: 13px;
+    }
+    .class5{
+        word-wrap: break-word;word-break:break-all;
+        width: 27px;
+        text-align: center;
+        height: 20px;
+    }
+    .class6{
+        word-wrap: break-word;word-break:break-all;
+        width: 30px;
+        text-align: center;
+        height: 20px;
+    }
+
+  .table{ margin-bottom: 0;}
+  .table > tbody > tr > td,.table > tbody > tr > th{ vertical-align: middle; border-left: 1px solid #ccc;}
+  .table.table-box{ border: 1px solid #ccc; }
+  .table.table-box>tbody>tr>td.td-box{ padding: 0; }
+  .table.table-box>tbody>tr>td:first-child{ font-weight: bold;}
+  .td-box .table tbody tr:first-child td{ border-top: none;}
+  .td-box .table tbody tr td:first-child{ border-left: none; }
+  .panel-primary{ border: none;}
+  .panel-primary .panel-heading{ background-color: #03A9F4;}
+  .panel .table > tbody > tr > td{ color: #333; border: none;}
+  .panel .table > tbody >tr:nth-of-type(even){ background-color: #f0f8ff;}
+
+  /*2018-11-22*/
+  body{ color: #fff; font-size: 13px; background-color:#191919;}
+  a{ color: #16c6ff; text-decoration: underline;}
+  .item{ position: relative; padding-left:170px;  margin-bottom: 25px;}
+  .item .infor{ font-size: 18px; color: #fff; 
+  	width: 150px; height: 100%;
+  	position: absolute;  left: 0; top: 0; 
+  	text-align: center;
+		display: flex;
+    justify-content:center;
+    align-items: center;
+    background: -webkit-linear-gradient(#8869ff,  #16c6ff); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#8869ff,  #16c6ff); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#8869ff,  #16c6ff); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#8869ff,  #16c6ff); /* 标准的语法（必须放在最后） */
+
+   }
+  .item .infor h5{ font-size: 18px;  margin-bottom: 20px; }
+  .item .infor span{ font-family:  Impact; font-size: 24px; letter-spacing:3px; display: inline-block; width: 40px; height: 40px; line-height: 40px; background-color: #ff6969; }
+  .item .box{ width: 100%; background-color: #303030; }
+  .item .box .alert-text{color: #16c6ff; font-size: 24px; height: 120px; line-height: 120px; text-align: center;}
+  .item .box .alert-text span{
+  	font-size: 24px;
+    background: linear-gradient(90deg, #8070ff, #25baff);
+    background-clip: text;
+    -webkit-background-clip:text;
+    color: transparent;
+    margin-right: 10px;
+   }
+  .item .box .table th{ color: #16c6ff; text-align: left; border-bottom: 4px solid #191919;}
+	.item .box .table td{ color: #d9dada; border: none; border-bottom: 2px solid #191919;}
+	.item .box .table tbody>tr:hover { background-color: #555;}
+	.item .box .table .red{ color:#ff6969;}
+	.item .box .table .green{ color:#04d2a4;}
+	
+
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+   <!--主要内容-->
+  <div class="main" id="main">
+    
+		<div class="title" style="color: #fff; margin-bottom:25px;">展示告警与恢复数据，每分钟自动刷新（最近一次刷新时间：2018-11-22 10:16:46）</div>
+
+		<!--列表页面-->
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口up/down</h5><span>6</span></div></div>
+			<div class="box">
+				<table  class="table">
+					<thead>            
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="150">端口</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="60">是否过滤</th> 
+					  	<th width="100">关键字</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td> <td>PHY UPDOWN</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>硬件异常</h5> <span>0</span></div></div>
+			<div class="box">
+				<div class="alert-text"><span class="fa fa-thumbs-up"></span>暂无告警！</div>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口流量</h5> <span>16</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">设备IP</th> 
+					  	<th width="150">端口</th>
+					  	<th width="100">流量大小</th>
+					  	<th width="80">带宽使用率</th>
+					  	<th width="60">IN/OUT</th>
+					  	<th width="70">设备角色</th>
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td><span class="red">告警（17）</span><span class="green">恢复（0）</span></td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>T0 </td> <td>POD0</td> <td>预留 </td> <td> 北京汇天3# </td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>专线和出口流量</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="140">专线/出口链路名称 </th> 
+					  	<th width="100">设备IP</th> 
+					  	<th width="150">端口</th>
+					  	<th width="100">流量大小</th>
+					  	<th width="80">带宽使用率</th>
+					  	<th width="60">IN/OUT</th>
+					  	<th width="50">业务线</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>BJS01-BGP(JDProxy)-CU </td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>预留</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>BJS01-BGP(JDProxy)-CU </td> <td>10.198.15.4 </td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td><td> 8143.30Mbps</td> <td>81.43%</td> <td>IN </td> <td>预留</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+	
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>端口CRC</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="150">端口</th> 
+					  	<th width="80">CRC增长率</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD</th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="70">持续时间</th> 
+					  	<th width="140">历史告警（24H）	</th> 
+					  	<th width="70">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>7140/min</td> <td>	T0</td> <td>POD0</td> <td>预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td><a href="#">Twenty-FiveGigE1/0/8</a></td> <td>7140/min</td> <td>	T0</td> <td>POD0</td> <td>预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="infor"><div class="infor-inner"><h5>设备探活</h5> <span>2</span></div></div>
+			<div class="box">
+				<table class="table">
+					<thead>   		
+					  <tr>
+					  	<th width="140">时间</th> 
+					  	<th width="100">IP</th> 
+					  	<th width="70">设备角色</th> 
+					  	<th width="50">POD </th> 
+					  	<th width="50">业务线</th> 
+					  	<th width="100">数据中心</th> 
+					  	<th width="50">持续时间</th> 
+					  	<th width="140">历史告警（24H）</th> 
+					  	<th width="60">是否过滤</th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td>T0</td> <td>POD0</td> <td>	预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤</td>
+						</tr>
+						<tr><td> 2018/11/19 13:54:33</td> <td>10.198.15.4</td> <td>T0</td> <td>POD0</td> <td>	预留</td> <td>北京汇天3#</td> <td>&nbsp; </td> <td> 告警（17） 恢复（0）</td> <td>未过滤 </td></tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+</div>
+
+<!--js文件-->
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/jquery-1.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/jquery.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/moment.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/jquery_002.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/reset.js"></script>
+
+<script type="text/javascript">
+  $('#logOut').click(function(event) {
+    /* Act on the event */
+    console.log('logout');
+    current_url = window.location.href;
+    window.location.href = 'http://ssa.jd.com/sso/logout?ReturnUrl=' + current_url;
+  });
+</script>
+
+
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-select.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-table.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-table-export.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/tableExport.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-table-zh-CN.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrapValidator.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/moment_002.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/bootstrap-datetimepicker.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/fileinput.js"></script>
+<script src="%E5%B1%95%E7%A4%BA%E5%91%8A%E8%AD%A6%E4%B8%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E6%81%AF_files/theme.js"></script>
+
+<script>
+    function get_url(management_ip, if_name) {
+        var url = "#";
+        var inputdata = {
+            'management_ip': management_ip,
+            'if_name': if_name,
+        };
+        console.log(inputdata);
+        $.ajax({
+            url: 'http://idc.jd.com/api/event_alarm/get_grafana_url/',
+            type: 'GET',
+            async: false,
+            data: inputdata,
+            headers: {'Authorization': 'Token a4d0953833cb184f07dd6abea42d385b048a839f'},
+            success: function (json) {
+                url = json;
+            },
+        });
+        if (url == "#")
+            $('#alert').append('<div class="alert alert-danger text-center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>找不到对应的grafana图!</strong></div>');
+        else
+            window.open(url);
+    }
+
+    setInterval(function(){
+       window.location.reload()
+    },60000)
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

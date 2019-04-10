@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../libs/animate.css" rel="stylesheet">
+<!--主题色-->
+<link href="../css/baseBlack.css" rel="stylesheet">
+<link href="../css/styleBlack.css" rel="stylesheet">
+<title>happy-base</title>
+
+<style type="text/css">
+.btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus {
+ outline:5px auto -webkit-focus-ring-color;
+ outline-offset:-2px;
+ outline: none;
+}
+
+.formBox .btn{ width: 120px; position: relative; border-color: transparent; 
+-webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+transition: all .3s cubic-bezier(.645,.045,.355,1);
+}
+.formBox .btn-circle{ width: 50px; height: 50px; border-radius: 100%;}
+.formBox .btn-danger span{ position:relative; z-index: 2;}
+
+/*进度*/
+.formBox .btn-danger::before{ content: " "; position: absolute; top:0; left:0; z-index: 0; opacity: 0; display: inline-block; width:0%; height: 100%; background-color: #b20601;  
+transition: width 1s 0.3s, opacity 0.3s;
+-webkit-transition: width 1s 0.3s, opacity 0.3s;
+} 
+.formBox .btn-danger:hover::before{ width: 100%; opacity:1;
+  -webkit-transition: width 1.2s;
+  transition: width 1.2s;     
+}
+/*波纹效果*/
+.ant-btn-clicked::after {
+ content:"";
+ position:absolute;
+ top:-1px;
+ left:-1px;
+ bottom:-1px;
+ right:-1px;
+ border-radius:inherit;
+ border:0 solid #ff0000;
+ opacity:0.9;
+ -webkit-animation:buttonEffect 0.4s;
+ animation:buttonEffect 0.4s;
+ display:block;
+
+}
+
+@-webkit-keyframes buttonEffect {
+ to {
+  opacity:0;
+  top:-10px;
+  left:-10px;
+  bottom:-10px;
+  right:-10px;
+  border-width:10px
+ }
+}
+@keyframes buttonEffect {
+ to {
+  opacity:0;
+  top:-10px;
+  left:-10px;
+  bottom:-10px;
+  right:-10px;
+  border-width:10px
+ }
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse navbar-right" id="navbarCollapse">
+    <ul class="nav navbar-nav" id="styles">
+    	<li><a href="#">link1</a></li>
+    	<li><a href="#">link2</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper"> 
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="list.html"><span class="glyphicon glyphicon-home"></span>设备性能列表</a></li>
+		  <li><a href="group.html">
+            <span class="glyphicon glyphicon-retweet"></span>分组设备管理</a>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="#">一级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+          </ol>
+      </li>
+      <li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>
+		</ul>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title mb">设备性能列表</div>
+     <!--table-->
+    <div class="bgGray">
+      <!--animate-->
+      <form class="form-inline formBox">
+        <button class="btn btn-danger" type="button"><span>ant</span></button>
+        <button class="btn btn-primary" type="button">bounce</button>
+        <button class="btn btn-success btn-circle" type="button">flip</button>
+
+      </form>
+
+
+
+     <!--animate end!-->
+    </div>
+  </div>
+</div>
+<!--底部-->
+<div class="footer"><p><a href="#">link1</a><a href="#">link2</a><a href="#">link3</a></p></div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/reset.js"></script>
+
+<script>
+  $(function(){
+
+    //var $animate = $('.ant-btn-clicked');
+    //$(".btn.btn-primary").addClass("ant-btn-clicked");
+    
+
+    $(".btn").click( function(){   
+      var $btn=$(this);
+      $btn.addClass("ant-btn-clicked");
+      // alert("success");
+      setTimeout( removeClass, 1000);
+    });
+   
+    function removeClass(){
+      $(".btn").removeClass("ant-btn-clicked");    
+    }
+
+    $(".btn-circle").click(function(){
+      $(this).addClass("animated bounce");
+      setTimeout( function(){
+        $(".btn-circle").removeClass("bounce");//  $(this)只能运行一次
+      }, 1000);
+    });
+    
+
+
+
+
+
+
+
+  })
+</script>
+</body>
+</html>

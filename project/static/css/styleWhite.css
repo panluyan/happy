@@ -1,0 +1,264 @@
+@charset "utf-8";
+/* CSS Document */
+/*组件化*/
+.dropdown-menu li{ color: #333;}
+/*header*/
+.navbar{ min-height: 50px;}
+nav.navbar-inverse{ background-color: #1199c4; border: none;}
+.navbar-inverse .navbar-nav>li>a{ color: #f2f2f2; font-size: 14px;}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover ,.navbar-inverse .navbar-nav>li>a:hover{
+    color: #fff;
+    background-color: #16aad8;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover ,.navbar-inverse .navbar-nav>li>a:hover{
+    color: #fff;
+    background-color: #16aad8;
+}
+.navbar-inverse .navbar-nav .dropdown .glyphicon{ margin-right: 5px;}
+.navbar-inverse .navbar-nav .dropdown-menu{min-width:100%; padding: 10px 0;}
+.navbar-inverse .navbar-nav .dropdown-menu:before{
+position: absolute;
+top: -7px;
+display: inline-block;
+border-right: 7px solid transparent;
+border-bottom: 7px solid rgb(255, 255, 2555);
+border-left: 7px solid transparent;
+content: '';
+left: 30px;
+right: auto;
+}
+.navbar-inverse .navbar-nav .dropdown-menu li a{ color: #666; padding: 8px 20px; }
+.navbar-inverse .navbar-nav .dropdown-menu li a i{ font-size: 12px; color: #999;}
+.navbar-inverse .navbar-nav .dropdown-menu li a:hover{ color: #000;}
+
+.navbar-brand{ display: inline-block; font-size: 20px; width: 200px;}
+.navbar-nav{ margin:0px; margin-right: 10px; }
+.navbar-inverse .navbar-brand,.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover { color: #fff;}
+.navbar-inverse .navbar-right a .glyphicon{ margin-right: 5px;}
+/*update 2018/3/12*/
+.toggleMenu{ color: #fff; font-size: 14px; padding: 10px 12px 10px;line-height: 30px; display: block; height: 30px; }
+.toggleMenu span{ font-size: 20px; margin-right: 5px;}
+/*.toggleMenu span:nth-child(2){ font-size: 14px; margin-left: 5px;}*/
+/*icon图片*/
+.toggleMenu .bg{ display:inline-block; width:22px; height:30px; background: url(../images/toggicon.png) no-repeat center; }
+.toggleMenu:hover .bg{ background: url(../images/toggicon1.png) no-repeat center; }
+.toggleMenu .bg.bg1{
+  transform: rotate(180deg);
+-ms-transform: rotate(180deg); /* IE 9 */
+-webkit-transform: rotate(180deg); /* Safari and Chrome */
+}
+
+.navbar-toggle{ color: #fff;}
+.wrapper{ width: 100%; padding-top: 60px; /*padding-bottom: 60px;*/ min-height: 100%;}
+
+/*左侧菜单*/
+.sideMenu{ width:200px;background-color: #dde6e9; height:100% !important; position: fixed; top: 0px; padding: 60px 0px 50px; }
+.sideMenu ul{ padding-top: 20px;}
+.sideMenu li a{color: #333; font-size: 14px; display:block; line-height:30px; padding:10px 20px 10px 10px; cursor: pointer; position: relative;}
+.sideMenu li a span.glyphicon{ margin-right: 10px;}
+.sideMenu li a i{ font-size:12px; position: absolute; right: 10px;top: 20px;}
+.sideMenu ol{ display: none; background: #52cbeb24;}
+.sideMenu ol a{ padding-left: 37px;}
+.sideMenu ul> li > a.active{color: #000; background-color: #f0f3f4; }
+.sideMenu ul> li > a:hover{ color: #00caff; }
+.sideMenu ol li a.active{ color:#fff; background-color: #52cbeb; }
+/*增加竖条 和菜单更新*/
+.sideMenu ul> li > a{ border-left: 4px solid #dde6e9;}
+.sideMenu ul> li > a.active{ border-left: 4px solid #52cbeb;}
+.sideMenu ul> li > a.active + ol { display: block; }
+.sideMenu li:hover a{ color: #000;}
+.sideMenu li a.active span.glyphicon,.sideMenu li:hover a span.glyphicon{ color: #52cbeb;}
+/*返回顶部*/
+.sideMenu .toTop{  margin-top: 20px;}
+.sideMenu .toTop a{ color: #999; font-size: 14px; display:block; line-height:30px; padding:10px 20px 10px 14px; position: relative; cursor: pointer;}
+.sideMenu .toTop a:hover{color: #52cbeb;}
+.sideMenu .toTop a span.glyphicon{ margin-right: 10px;}
+
+
+
+/*主要内容*/
+.main{width: 100%; padding: 10px 20px; padding-left:220px;}
+/*内容标题*/
+.title{ color: #333; font-size: 20px; line-height: 25px; border-left: 4px solid #52cbeb; padding-left: 10px; margin: 10px 0px; }
+.title i{font-size:14px; font-family: Arial; margin:0px 5px;}
+/*响应式导航*/
+@media( max-width:767px){
+ .main{ padding-left: 20px!important;}
+ .slimScrollDiv{ z-index: 100;}
+ .sideMenu{ width: 100%; min-height: auto!important; display: none; z-index: 100;}
+ .toggleMenu{ float: right; margin-right: 10px;}
+}
+/*footer*/
+.footer{ width: 100%; height: 50px; line-height: 50px; position:absolute; bottom: 0px; left: 0px; background:#292929; }
+.footer a{ color: #b3cbd2; margin: 0px 20px;}
+.footer a:hover{color:#52cbeb; text-decoration: underline;}
+/*select样式重置*/
+.bootstrap-select>.dropdown-toggle.bs-placeholder{ padding: 6px 12px;}
+.dropdown-menu{ z-index: 1030;}
+.bootstrap-select.btn-group .dropdown-menu{ min-width:100% !important;}
+/*bootstrap-table*/
+.fixed-table-container{background-color: #fff; padding:0 10px; padding-bottom: 100px !important; border: none;border-radius: 2px; box-shadow: 0 1px 1px rgba(0, 0, 0, .05);}
+.bootstrap-table .table{ table-layout: fixed; width: 100%;border: 1px solid #eaeff0;}
+/*.bootstrap-table .table thead>tr>th{ color: #52cbeb; }*/
+.bootstrap-table .table thead>tr>th:last-child{ padding-right: 10px;}
+.bootstrap-table .table thead>tr>th, .bootstrap-table .table tbody>tr>td{border-bottom-color:#eaeff0; }
+.bootstrap-table .table tbody>tr>td a.label i{ margin-right:3px;}
+.bootstrap-table .table tbody>tr:hover{ background-color:#f8f8f8;}
+.fixed-table-container tbody .selected td{ background-color:#c1e9f5;}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{background-color: #52cbeb;
+    border-color: #52cbeb;}
+/*table基础样式*/
+.table{ table-layout: fixed; width: 100%;}
+/*.table thead>tr>th{ color: #52cbeb; }*/
+.table thead>tr>th, .bootstrap-table .table tbody>tr>td{ border-bottom-color:#eaeff0; }
+.table tbody>tr>td{ /*font-size: 12px;*/ word-break: break-all;}
+.table tbody>tr>td a.label i{ margin-right:3px;}
+.table tbody>tr:hover{ background-color:#f8f8f8;}
+/*table-toolbar响应*/
+.fixed-table-toolbar{ position: relative;}
+.fixed-table-toolbar #toolbar{ margin-top: 20px;}
+.fixed-table-toolbar .input-group,.fixed-table-toolbar .pull-right.search,.form-inline.formBox .input-group{ width: 130px;}
+.fixed-table-toolbar .bs-bars{ float: none !important;}
+.fixed-table-toolbar .bs-bars .input-group{ margin-top: 0px;}
+.fixed-table-toolbar .bs-bars, .fixed-table-toolbar .columns, .fixed-table-toolbar .search{margin-bottom: 0px;}
+.fixed-table-toolbar .bs-bars .form-inline > button.btn,.fixed-table-toolbar .bs-bars .input-group{ margin-bottom: 0px;}
+.fixed-table-toolbar .form-inline.formBox{ font-size: 14px;}
+.fixed-table-toolbar .pull-right{ position: absolute; bottom: 10px; display: inline-block;}
+.fixed-table-toolbar .columns-right.pull-right{ right: 10px;}
+.formBox{ margin-bottom: 10px; border-radius: 2px; box-shadow: 0 1px 1px rgba(0, 0, 0, .05);}
+.form-box2,.formBox{background-color: #fff; padding: 10px;}
+.form-box2{ height: 54px;}
+.form-box2 .btn{ padding:5px;}
+.form-box2 .btn i{ margin-right: 3px;} 
+/*bootstrap-table v8版本的兼容处理*/
+.fixed-table-toolbar .bars{ float: none !important;}
+.fixed-table-toolbar .bars .input-group{ margin-top: 0px;}
+.fixed-table-toolbar .bars{ margin-bottom: 0px;}
+.fixed-table-toolbar .bars .form-inline > button.btn,.fixed-table-toolbar .bars .input-group{ margin-bottom: 0px;}
+
+/*table异步加载*/
+.bootstrap-table td .progress{ width: 100px; background-color: #444; margin-bottom: 0px;}
+.progress-box{ width: 100px; display: inline-block;}
+.progress-box .progress{ height: 32px; margin-bottom: 0px; border-radius: 0; background-color: transparent;}
+.progress-box .progress .progress-bar-success{color: #fff; line-height: 32px; border-radius: 3px;}
+
+/*table-loading*/
+.fixed-table-loading .fa {
+	position: relative;
+	display: block;
+	font-size: 40px;
+  width: 40px;
+  height: 40px;
+  top: 18px;
+  left: 50%;
+  margin-top:-20px;
+  margin-left: -20px;
+}
+/*select样式重置*/
+.bootstrap-select>.dropdown-toggle.bs-placeholder{ color: #333; border-radius: 4px;}
+.dropdown-menu{ z-index: 1030;}
+.input-group-btn:last-child>.btn{ border-radius: 4px;}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover{ background-color:#52cbeb;}
+.dropdown-menu li.dropdown-header{ color: #777;}
+/*时间选择*/
+.bootstrap-datetimepicker-widget{ display: block;}
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{ background-color:#52cbeb; }
+/*分页*/
+.pagination>li>a, .pagination>li>span{ color: #58666e;}
+/*button*/
+.btn-primary{ background-color:#52cbeb; border-color:#52cbeb;}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{ background-color:#52cbeb; border-color:#52cbeb;}
+.btn-link{ color: #52cbe1; }
+.btn-link:hover{ color: #52cbe1;}
+.btn-link:focus{ color: #52cbe1;}
+.btn-nobg{ background-color: transparent; border: none;}
+.btn-nobg:hover,.btn-nobg:focus{ color: #fff; background-color: transparent; border: none;}
+.btn-blue{ background-color:#52cbeb; }
+/*折叠*/
+/*collapse折叠*/
+.bgCollapse .collapse-header{ padding-left: 30px;}
+.bgCollapse .control-label{ width: 120px; height: 34px; line-height: 34px; padding-left: 10px; background-color: #eaeaea; }
+.bgCollapse .form-control{ color: #fff; width: 250px;}
+.bgCollapse .form-group{ margin: 5px 30px;}
+.bgCollapse .close{ color: #fff; opacity: 1;}
+.bgCollapse .col-footer{ display:}
+/*模态框*/
+.modal-footer .btn-default{ color: #333; background-color: #fff; border-color: #ccc;}
+/*tab菜单*/
+.tab-content>.active{ color: #fff;}
+
+/*顶部加载进度条*/
+#progressBar{ 
+	position: fixed;
+	top:0px;
+	z-index: 1031;
+	height: 2px;
+	background:#2085c5;
+	transition:opacity 500ms linear;
+}
+#progressBar.done{
+	opacity: 0;
+}
+#progressBar span{
+	position: absolute;
+	right: -10px;
+	width: 150px;
+	height: 2px;
+	opacity: 1;
+	-webkit-box-shadow:#2085c5 1px 0 6px 1px;
+	-webkit-border-radius:100%;
+	-webkit-animation:pulse 2s ease-out 0s infinite;
+}
+@-webkit-keyframes pulse{
+	30% {
+		opacity: .6;
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		opacity: .6;
+	}
+}
+.alert{position: fixed; top:50px; right: 0px;z-index: 1050; animation:goIn 1s ease;}
+.disappear{ opacity: 0; animation:goOut 1s ease;}
+@keyframes goIn{
+   0%{
+     top:0px;
+     opacity: 0;
+   }
+   100%{
+   	top:50px;
+    opacity: 1;}
+}
+@-webkit-keyframes goIn{ 
+   0%{
+     top:0px;
+     opacity: 0;
+   }
+   100%{
+   	top:50px;
+    opacity: 1;}
+}
+
+@keyframes goOut{
+   0%{
+     top:50px;
+     opacity: 1;
+   }
+   100%{
+    top:0px;
+    opacity: 0;
+   }
+
+}
+@-webkit-keyframes goOut{ 
+   0%{
+   	top:50px;
+    opacity: 1;}
+   100%{
+    top:0px;
+    opacity: 0;
+   }
+}
+

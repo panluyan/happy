@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document update-2019/1/30 */
+/*告警入口*/
+.num-lists ul{ display: flex; justify-content: space-between;}
+.num-lists li.item{ width: 100%; margin-bottom: 20px; background: #fff; padding: 0px 0px 20px; margin-right: 30px; cursor: pointer; }
+.num-lists .item.active{ box-shadow: 2px 5px 14px #ccc; border: 2px solid #ccc; -webkit-transform: scale(1.05); transform: scale(1.05);}
+.num-lists .item.active h5,.num-lists .item.active p{color: #00caff;}
+.num-lists li:last-child{ margin-right: 0px; }
+.num-lists h5{ font-size: 18px;text-align: center;line-height: 40px;margin-bottom: 30px;background: #374055;color: #fff;margin-top: 0;}
+.num-lists p{ line-height: 30px; text-align: center; }
+.num-lists span{  font-family: impact; color: #00caff; font-size: 30px; margin-right: 5px;}
+/*表单样式*/
+.formBox::after{ content: ""; display: block; height: 0; clear: both; }
+ /*switch插件样式重置*/
+.switch{ vertical-align: middle; min-width: 80px; margin-right: 10px;}
+.has-switch span, .has-switch label{ line-height: 24px;}
+.has-switch span.switch-info{ background-image: none;}
+.fixed-table-toolbar .input-group, .fixed-table-toolbar .pull-right.search, .form-inline.formBox .input-group{ width:200px;}
+
+/*chart图表*/
+.chart{ width:100%; height: 500px; margin-bottom: 10px;}
+/*tooltip样式重置*/
+.chart > div:nth-child(2){ max-height:500px; min-width: 280px; max-width: 400px; overflow: auto;}
+.chart > div:nth-child(2) p{ white-space: normal; line-height: 22px;}
+/*利用伪元素，替代背景色，从而让border-color为透明的时候，背景色设置为透明色，最终效果多出透明色，*/
+/*.chart > div:nth-child(2){background-color: transparent !important; border-left: 10px solid transparent !important; }
+.chart > div:nth-child(2)::before{ content: ""; position: absolute;  width:100%; height: 100%; background-color: rgba(50, 50, 50, 0.7); left: 0; top: 0; z-index: -1;}*/

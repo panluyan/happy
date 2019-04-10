@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<!--switch插件-->
+<link href="../libs/switch/bootstrapSwitch.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<!--主题色-->
+<link title="white" href="../css/baseWhite.css" rel="stylesheet">
+<link title="white" href="../css/styleWhite.css" rel="stylesheet">
+<link title="white" href="../css/menu.css" rel="stylesheet">
+<link title="white" href="../css/echart.css" rel="stylesheet">
+<title>可视化-端口流量</title>
+<style type="text/css">
+.chart{ height: 500px;}
+.chart > div:nth-child(2){ max-height:500px; min-width: 280px; max-width: 400px; overflow: auto;}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav navbar-main">
+      <li><a href="#">产品1</a></li>
+      <li><a href="#">产品2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li><a href="#">link1</a></li>
+      <li><a href="#">link2</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">2222</a></li>
+            <li><a href="">3333</a></li>
+          </ol>
+      </li>
+      <!--<li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>-->
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">可视化->端口流量</div>
+
+    <!--table-->
+    <div class="tableBox">
+      <!--自定义toolbar clearfix-->
+      <div id="toolbar">
+        <div class="form-inline formBox ">
+          <!--搜索ip-->
+          <div class="input-group">
+            <select class="selectpicker" multiple  data-live-search="true" title="搜索IP">
+              <optgroup label="IP1">
+                  <option>port1</option>
+                  <option>port2</option>
+              </optgroup>
+              <optgroup label="IP2">
+                  <option>port1</option>
+                  <option>port2</option>
+                  <option>port3</option>
+                  <option>port3</option>
+              </optgroup>
+            </select>
+          </div>
+          <!--button-->
+          <button type="submit" class="btn btn-info">查询</button>
+          <button type="submit" class="btn btn-success">重置</button>
+          <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#myModal">添加为常用端口组</button>
+          <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#myModal">常用端口组</button>
+          
+
+          <div class="pull-right">
+            <!--switch-->
+            <strong>自动刷新&nbsp;:</strong>
+            <div class="switch" id="mySwitch" data-on="info">  
+              <input type="checkbox" checked data-on-text="YES" data-off-text="NO"/>  
+            </div> 
+            <!--时间快捷键-->
+            <div class="input-group" style="width:120px">
+              <select class="selectpicker" title="时间快捷范围">
+                    <option>最近一天</option>
+                    <option>最近一周</option>                
+                    <option>最近一个月</option>
+                    <option>最近一个季度</option>
+                    <option>最近一年</option>    
+              </select>
+            </div>
+            <!--时间选择-->
+            <div class="input-group date" id="datetimepicker1">
+             <input type="text" class="form-control" placeholder="开始时间"/>
+             <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+             </span>
+            </div>
+            <span>TO</span>
+            <div class="input-group date" id="datetimepicker2">
+              <input type="text" class="form-control" placeholder="结束时间"/>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div> 
+
+        </div>
+
+       
+      </div><!--toolbar end-->
+     
+      <!--echart图表渲染部分-->
+      <div id="inout-chart" class="bgWhite chart"></div>
+
+      <!-- table列表信息-->
+      <div class="bgWhite">
+        <table class="table">   
+          <thead>
+            <tr>
+              <th>端口明细 </th><th>Out最新</th><th>In最新</th><th>Out峰值</th><th>Out峰值时间</th><th>In峰值</th><th>In峰值时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>192.168.0.11,Ethernet1/45</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr>
+            <tr>
+              <td>192.168.0.11,Ethernet1/46</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr> 
+            <tr>
+              <td>192.168.0.11,Ethernet1/47</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr>
+            <tr>
+              <td>192.168.0.11,Ethernet1/48</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr>
+            <tr>
+              <td>192.168.0.11,Ethernet1/49</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr>
+            <tr>
+              <td>192.168.0.11,Ethernet1/50</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+
+    
+
+  </div><!--main-end-->
+</div><!--wrapper-end-->
+
+<!--模态-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题 </h4>
+      </div>
+      <div class="modal-body">文本</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div> 
+</div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>   
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--switch插件-->
+<script src="../libs/switch/bootstrapSwitch.js"></script>
+<!--图表-->
+<script src="../libs/echarts/echarts.min.js"></script>
+<!--图表-->
+<script src="../libs/echarts/theme/dark.js"></script>
+<script src="../libs/echarts/theme/westeros2.js"></script>
+<script src="../libs/echarts/inout.js"></script>
+
+<script> 
+  $(function(){  
+      $('#mySwitch input').bootstrapSwitch(); 
+  });
+  //下拉菜单
+  $(".selectpicker").selectpicker();
+  //时间datatimepicker
+  $("#datetimepicker1").datetimepicker();
+  $("#datetimepicker2").datetimepicker();
+  //collapse.close
+  $(".collapse .close").click(function(){
+    $(this).parent().removeClass("in")
+  });
+  //echart图表配置
+  var dom=document.getElementById('inout-chart');
+  
+  //(1):theme的json文件引入方式:json文件存在跨域问题
+    // $.getJSON('../libs/echarts/theme/westeros2.json', function (themeJSON) {
+    //     // var obj=JSON.parse(themeJSON); 会报异常
+    //     var obj= typeof themeJSON=='string'?JSON.parse(themeJSON):themeJSON;
+    //     //申明json主题的name名称
+    //     echarts.registerTheme('westeros2',obj);
+    //     //引入主题名称
+    //     var chart1 = echarts.init(dom, 'westeros2');
+    //     //最后渲染chart图表
+    //     chart1.setOption(option1);     
+  // });
+
+  //(2):简单方式，theme的js文件引入方式,js文件里面已经封装好的相对应的theme主题name名称
+  var chart1=echarts.init(dom,'westeros2');
+  // chart1.showLoading();
+  chart1.setOption(option1);
+
+  // chart1.hideLoading();
+  window.addEventListener("resize", function() {
+      chart1.resize();
+  });
+
+  $("#toggleMenu").click(function(){
+      chart1.resize(); 
+      // echarts.init(document.getElementById('inout-chart'), 'westeros2').resize();  
+  }); 
+ 
+ 
+  
+  
+//控制tooltip可悬浮滚动
+$(".chart > div:nth-child(2)").hover(function(){
+  $(this).show();
+});
+
+</script>
+
+</body>
+</html>
+
+  

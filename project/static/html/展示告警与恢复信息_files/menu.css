@@ -1,0 +1,16 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*改版新增update-2018/8/1*/
+nav.navbar-inverse{ background-color: #112346;}
+.sideMenu{ background-color:#2d3341; }
+.sideMenu li a{ color: #ced6e5;}
+.sideMenu ul> li > a{border-color: transparent;}
+.sideMenu ul> li > a.active{ color: #fff; background-color:#52cbeb; }
+.sideMenu ol{ background-color: #374055;}
+.sideMenu ol li a.active{ color: #00caff; background-color:#374055; }
+.sideMenu ol li a:hover{ color: #00caff; }
+.sideMenu li:hover a{ color: #fff;}
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+    color: #00caff;
+}

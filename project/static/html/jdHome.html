@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>home</title>
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../libs/jquery.fullPage.css" rel="stylesheet">
+<!--主题色-->
+<link href="../css/baseBlack.css" rel="stylesheet">
+<link href="../css/styleBlack.css" rel="stylesheet">
+<link href="../css/home.css" rel="stylesheet">
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/reset.js"></script>
+<script src="../libs/jquery.fullPage.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script>
+$(function(){
+  //初始化fullPage.js
+  $('#fullpage').fullpage({
+    'navigation':true,
+    continuousVertical: true,//继续循环播放
+    scrollingSpeed: 0,//滚屏速度
+    afterLoad: function(anchorLink){
+        $(".fullpage .section h1,.section p,.fullpage .section a").delay(0).animate({
+          top: '0'
+        }, 800, 'easeOutExpo');
+
+        $(".section img").delay(0).animate({
+          bottom: '0'
+        }, 800, 'easeOutExpo');
+
+        // $(".section").find("h1").fadeIn(2000);
+    },
+    onLeave: function(direction){
+        $('.fullpage .section h1,.section p,.fullpage .section a').delay(0).animate({
+          top: '-100%'
+        }, 800, 'easeOutExpo');
+
+        $('.section img').delay(0).animate({
+          bottom: '-100%'
+        }, 800, 'easeOutExpo');
+  
+        // $('.section').find('h1').fadeOut(2000);
+    }
+
+
+
+
+  });
+  //自动轮播
+  // setInterval(function(){
+  //   $.fn.fullpage.moveSectionDown();
+  // }, 5000);
+
+
+});
+</script>
+</head>
+<body>
+<!--header-->
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <!-- <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button> -->
+      <!--右侧菜单收缩--> 
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-align-justify"></span>
+      </button>             
+    </div>     
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav">           
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self">
+          主机监控
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li><a>敬请期待</a></li>
+          </ul>
+      </li>           
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="#">
+          监控配置
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+              <li><a>敬请期待</a></li>
+          </ul>
+      </li>            
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="/bmc_log/">
+          监控仪表盘
+          </a>
+      </li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="/pigeon/source/">告警管理
+          </a>
+      </li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="/ld/server/mobile_download/">
+          故障管理平台
+          </a>
+      </li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" target="_self" href="/ld/server/mobile_download/">
+          监控大屏
+          </a>
+      </li>     
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li class="dropdown">
+          <a href="#" data-toggle="dropdown" aria-expanded="true">
+              <i class="glyphicon glyphicon-user"></i>panluyan_yhd<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li id="logOut"><a href="#">退出</a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+
+<div class="fullpage" id="fullpage">
+  <div class="section section1">
+      <h1>通用监控</h1>
+      <p>监控数据来源支持多种采集方式：API、数据库、agent采集、日志采集、消息队列等，提供全方位的数据源通道</p>
+      <a href="#">立即体验</a>
+      <img src="../images/d1.png">
+  </div>
+<!--   <div class="section section2"> 
+      <h1>监控视图</h1>
+      <p>提供自定义的监控仪表盘功能</p>
+      <a href="#">了解详情</a>
+      <img src="../images/d2.png">
+  </div>
+  <div class="section section3">
+      <h1>监控规则</h1>
+      <p>静态阈值、动态阈值，阈值组合，告警恢复通知，无数据告警</p>
+      <a href="#">了解详情</a>
+      <img src="../images/d3.png">
+  </div> -->
+  <div class="section section4">
+      <h1>告警管理</h1>
+      <p>丰富的事件管理功能、多种通知渠道、支持事件告警接口</p>
+      <a href="#">了解详情</a>
+      <img src="../images/d4.png">
+  </div>
+  <div class="section section5">
+      <h1>监控大屏</h1>
+      <p>提供了支持多种业务类型的监控大屏模型，无需定制化开发，只需提供数据源，即可轻松配置出属于你的实时监控大屏</p>
+      <a href="#">了解详情</a>
+      <img src="../images/d5.png">
+  </div>
+  <div class="section section6">
+      <h1>故障管理平台</h1>
+      <p>。。。。</p>
+      <a href="#">了解详情</a>
+      <img src="../images/d6.png">
+  </div>
+
+</div>
+
+
+</body>
+</html>
+

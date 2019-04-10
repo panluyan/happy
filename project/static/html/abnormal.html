@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<!--switch插件-->
+<link href="../libs/switch/bootstrapSwitch.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<!--主题色-->
+<link title="white" href="../css/baseWhite.css" rel="stylesheet">
+<link title="white" href="../css/styleWhite.css" rel="stylesheet">
+<link title="white" href="../css/menu.css" rel="stylesheet">
+<link title="white" href="../css/echart.css" rel="stylesheet">
+<title>异常数据报表中心</title>
+<style type="text/css">
+/*.chart{ height: 500px;}
+.chart > div:nth-child(2){ max-height:500px; min-width: 280px; max-width: 400px; overflow: auto;}*/
+.title a{ font-size: 16px;}
+.title a span{ margin-right: 5px;}
+.sub-title{font-size: 20px; color: #000; line-height: 30px; padding: 10px;}
+.sub-title span{ font-size: 14px; color: #999; margin-left: 20px; }
+.pie{ width:550px; height: 240px; margin-left: 20px;}
+.formBox{ box-shadow: none; }
+.fixed-table-toolbar .columns-right.pull-right{bottom:20px; margin-top:0px;}
+.export .btn{ color: #5bc0de; border-color: #46b8da;}
+.fixed-table-container{ padding-bottom: 20px !important; box-shadow: none;}
+/*.bootstrap-table{ max-height: 432px; overflow: auto;}*/
+.table thead tr th{ background: #f0f3f4 !important; text-align: center;}
+.table tbody tr td{ text-align: center;}
+
+.table.infor{ width: 500px;}
+.table.infor, .table.infor thead tr th, .table.infor tbody tr td{ border: none;}
+.table.infor thead tr th{ background: transparent!important; text-align: center; }
+.table.infor thead tr th:first-child{ text-align: left; padding-left: 20px;}
+.table.infor tbody tr td:first-child{ text-align: left; padding-left: 20px;}
+.table.infor tbody tr td span{ display: inline-block; width: 25px; height: 15px; background: #59c4e6; border-radius: 5px; vertical-align: middle; margin-right: 5px;}
+.table.infor tbody tr:nth-child(2) td span{background: #6be6c1;}
+.table.infor tbody tr:nth-child(3) td span{background: #90d38b;}
+             
+.cmdb-table thead tr th:first-child,.bootstrap-table .cmdb-table tbody tr td:first-child{ text-align: left; padding-left: 30px;}
+.bootstrap-table .cmdb-table tbody tr td:first-child{padding-left: 40px;}
+
+/*
+.pull-left.pagination-detail{
+display:none;
+}*/
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav navbar-main">
+      <li><a href="#">产品1</a></li>
+      <li><a href="#">产品2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li><a href="#">link1</a></li>
+      <li><a href="#">link2</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">2222</a></li>
+            <li><a href="">3333</a></li>
+          </ol>
+      </li>
+      <!--<li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>-->
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">异常数据报表中心<a href="#" class="pull-right"><span class="glyphicon glyphicon-link"></span>查看监控覆盖率</a></div>
+    <div class="bgWhite">
+      <h5 class="sub-title">异常数据概览<span>数据统计范围：2019/2/18 2:00:00—2019/2/19 2:00:00</span></h5>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="pie" id="pie"></div>
+        </div>
+        <div class="col-md-6">
+          <table class="table infor">
+            <thead>
+              <th>异常分类</th>
+              <th>异常数据量</th>
+              <th>占比</th>
+            </thead>
+            <tbody>
+              <tr><td><span class="img"></span>采集异常</td> <td>535</td> <td>36.03%</td> </tr>
+              <tr><td><span class="img"></span>清洗异常</td> <td>510</td> <td>34.34%</td> </tr>
+              <tr><td><span class="img"></span>CMDB无采集有</td> <td>440</td> <td>29.63%</td> </tr>
+            </tbody>  
+      </table>
+        </div>
+      </div>
+
+    </div>
+    <!--采集异常列表-->
+    <div class="bgWhite">
+      <h5 class="sub-title">采集异常列表</h5>
+      <div class="form-inline formBox">
+        <form role="form">
+          <a class="btn btn-default btn-info" >端口CRC</a>
+          <a class="btn btn-default">端口流量</a>
+          <a class="btn btn-default">syslog</a>
+          <a class="btn btn-default">设备探活</a>
+          <a class="btn btn-default">专线流量</a>
+          <a class="btn btn-default">出口流量</a>
+        </form>
+      </div>
+      <table class="table table-hover"  data-pagination="true"
+        data-show-export="true"
+        >
+        <thead>
+          <th>Device_ID</th>
+          <th>管理IP</th>
+          <th>带外IP</th>
+          <th>设备角色</th>
+          <th>机房</th>
+        </thead>
+        <tbody>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td></tr>
+        </tbody>  
+      </table>
+    </div>
+    <!--清洗异常列表-->
+    <div class="bgWhite">
+      <h5 class="sub-title">清洗异常列表</h5>
+      <div class="form-inline formBox">
+        <form role="form">
+          <a class="btn btn-default btn-info">端口CRC</a>
+          <a class="btn btn-default">端口流量</a>
+          <a class="btn btn-default">syslog</a>
+          <a class="btn btn-default">设备探活</a>
+        </form>
+      </div>
+      <table class="table table-hover" data-show-export="true" data-pagination="true">
+        <thead>
+          <th>Device_ID</th>
+          <th>IP</th>
+          <th>端口</th>
+          <th>异常类型</th>
+          <th>流程状态</th>
+          <th>设备角色</th>
+          <th>机房</th>
+        </thead>
+        <tbody>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+          <tr><td>&nbsp;</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+        </tbody>  
+      </table>
+    </div>
+
+    <!--CMDB无采集有列表-->
+    <div class="bgWhite">
+      <h5 class="sub-title">CMDB无采集有列表</h5>
+      <table class="table table-hover cmdb-table" data-show-export="true" data-pagination="true">
+        <thead>
+          <th style="position: relative;">
+          <a class="dropdown-toggle" data-toggle="dropdown">监控类型 <b class="caret"></b></a>
+          <ul class="dropdown-menu" style="top:45px; left:10px;">
+            <li><a href="#">jmeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li><a href="#">Jasper Report</a></li>
+          </ul>
+          </th>         
+          <th>IP</th>
+          <th>Hostname</th>
+        </thead>
+        <tbody>
+          <tr><td>端口CRC</td>  <td></td> <td></td> </tr>
+          <tr><td>syslog</td>   <td></td> <td></td> </tr>
+          <tr><td>端口流量</td> <td></td> <td></td> </tr>
+          <tr><td>设备探活</td> <td></td> <td></td> </tr>
+        </tbody>  
+      </table>
+    </div>
+
+
+    
+
+  </div><!--main-end-->
+</div><!--wrapper-end-->
+
+<!--模态-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题 </h4>
+      </div>
+      <div class="modal-body">文本</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div> 
+</div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>   
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-table-export.min.js"></script>
+<script src="../js/bootstrap-table-resizable.js"></script>
+<script src="../js/colResizable-1.6.min.js"></script>
+
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--switch插件-->
+<script src="../libs/switch/bootstrapSwitch.js"></script>
+<!--图表-->
+<script src="../libs/echarts/echarts.min.js"></script>
+<!--图表-->
+<!-- script src="../libs/echarts/theme/dark.js"></script>
+<script src="../libs/echarts/theme/white.js"></script>
+<script src="../libs/echarts/theme/westeros.js"></script> -->
+<script src="../libs/echarts/theme/westeros2.js"></script>
+<script src="../libs/echarts/inout.js"></script>
+
+<script> 
+$(function(){  
+
+  //下拉菜单
+  $(".selectpicker").selectpicker();
+
+  $(".formBox .btn").click(function(){
+    $(this).siblings().removeClass("btn-info");
+    //单选-满足全部
+    $(this).addClass("btn-info");
+    //可取消选中,可多选
+    // $(this).toggleClass("active", 1000 );
+   });
+  //table列表配置   
+  $('.table').bootstrapTable({
+    exportTypes:['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'png', 'pdf'],
+    // pagination: true,
+    pageSize: 10,
+    pageNumber: 1,
+    // height: 300,
+    export: true,
+    resizable: true,
+
+
+  });
+
+  
+  //echart图表配置
+  var dom=document.getElementById('pie');
+  
+  //(1):theme的json文件引入方式:json文件存在跨域问题
+    // $.getJSON('../libs/echarts/theme/westeros2.json', function (themeJSON) {
+    //     // var obj=JSON.parse(themeJSON); 会报异常
+    //     var obj= typeof themeJSON=='string'?JSON.parse(themeJSON):themeJSON;
+    //     //申明json主题的name名称
+    //     echarts.registerTheme('westeros2',obj);
+    //     //引入主题名称
+    //     var chart1 = echarts.init(dom, 'westeros2');
+    //     //最后渲染chart图表
+    //     chart1.setOption(option1);     
+  // });
+
+  //(2):简单方式，theme的js文件引入方式,js文件里面已经封装好的相对应的theme主题name名称
+  var chart1=echarts.init(dom,'westeros2');
+
+  var option1 ={
+    title: {
+        show: false,
+        text: '天气情况统计',
+        subtext: '虚构数据',
+        left: 'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{b} : <br/> {d}% ({c})"
+    },
+    legend: {
+        top: 0,
+        // bottom:0,
+        left: 0,
+        orient: 'vertical',//竖直方向排列
+        data: ['采集异常','清洗异常','CMDB无采集有']
+    },
+    // color:[
+    //         "#59c4e6",//蓝色
+    //         "#90d38b",//青色
+    //         "#ffb248",//橙红色3
+    //         "#e7e563",//黄色
+    //         "#6be6c1",//绿色       
+    // ],
+    series : [
+      {
+        type: 'pie',
+        radius : '65%',//表示外半径为可视区尺寸（容器高宽中较小一项）的 65% 长度
+        center: [340, "45%"],//[宽，高]["55%", "50%"]
+        label: {
+          show:true,     
+          // position: 'inner',
+          formatter: "{b}", //\n{d}%   {a}（系列名称），{b}（数据项名称），{c}（数值）, {d}（百分比）
+        },
+        selectedMode: 'single',
+        data: [
+          { value:535, name: '采集异常'},
+          { value:510, name: '清洗异常'},
+          { value:440, name: 'CMDB无采集有'},
+        ],
+        // itemStyle: {
+        //   emphasis: {
+        //       shadowBlur: 10,
+        //       shadowOffsetX: 0,
+        //       shadowColor: 'rgba(0, 0, 0, 0.5)'
+        //   }
+        // }
+      }
+    ]
+
+  };
+  // chart1.showLoading();
+  chart1.setOption(option1);
+
+  // chart1.hideLoading();
+  window.addEventListener("resize", function() {
+      chart1.resize();
+  });
+
+  $("#toggleMenu").click(function(){
+      chart1.resize(); 
+      // echarts.init(document.getElementById('inout-chart'), 'westeros2').resize();  
+  }); 
+ 
+  
+  
+  //控制tooltip可悬浮滚动
+  $(".chart > div:nth-child(2)").hover(function(){
+    $(this).show();
+  });
+
+
+});
+</script>
+
+</body>
+</html>
+
+  

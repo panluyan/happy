@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<!--主题色-->
+<link title="white" href="../css/baseWhite.css" rel="stylesheet">
+<link title="white" href="../css/styleWhite.css" rel="stylesheet">
+<title>happy</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav navbar-main">
+      <li><a href="#">产品1</a></li>
+      <li><a href="#">产品2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li><a href="#">link1</a></li>
+      <li><a href="#">link2</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">2222</a></li>
+            <li><a href="">3333</a></li>
+          </ol>
+      </li>
+      <!--<li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>-->
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">模板demo</div>
+    <!--table-->
+    <div class="tableBox">
+    <!--自定义toolbar-->
+      <div id="toolbar">
+        <div class="form-inline formBox">
+          <div class="input-group">
+           <select class="selectpicker" title="单选">
+             <option>option1</option>
+             <option>option2</option>
+             <option>option3</option>
+           </select>
+         </div>
+         <div class="input-group">
+           <select class="selectpicker" multiple title="多选">
+             <option>option1</option>
+             <option>option2</option>
+             <option>option3</option>
+           </select>
+         </div>
+         <div class="input-group">
+            <select class="selectpicker" title="分组">
+              <optgroup label="Picnic">
+                  <option>Mustard</option>
+                  <option>Ketchup</option>
+                  <option>Relish</option>
+              </optgroup>
+              <optgroup label="Camping">
+                  <option>Tent</option>
+                  <option>Flashlight</option>
+                  <option>Toilet Paper</option>
+              </optgroup>
+            </select>
+         </div>
+         <div class="input-group">
+           <select class="selectpicker" data-live-search="true" title="可搜可选">
+              <option>option1</option>
+              <option>option2</option>
+              <option>option3</option>                
+           </select>
+         </div>
+         <!--search-->
+         <div class="input-group search">
+           <input class="form-control" type="text"/>
+           <span class="input-group-addon btn"><i class="glyphicon glyphicon-search"></i></span>
+         </div>
+         <!--时间选择-->
+         <div class="input-group date" id="datetimepicker1">
+           <input type="text" class="form-control"/>
+           <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+           </span>
+         </div>
+         <!--button-->
+         <!--模态框-->
+         <button class="btn btn-default" data-toggle="modal" data-target="#myModal">模态框</button>
+         <!--折叠-->
+         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#myCollapse">折叠</button>
+         <button type="submit" class="btn btn-success">成功</button>
+         <button type="submit" class="btn btn-warning">警告</button>
+         <button type="submit" class="btn btn-danger">危险</button>
+         <button type="submit" class="btn btn-link">链接按钮</button>
+       </div>
+       <!--collapse-->
+       <div id="myCollapse" class="bgCollapse collapse">
+         <button type="button" class="close" aria-label="Close" data-dismiss="collapse"><span aria-hidden="true">&times;</span></button>
+            <h5 class="collapse-header">新增分组</h5>
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <label class="control-label">分组名称：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label">分组内机器数量：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label">硬件配置：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label">所在位置：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label">修改时间：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group">
+                <label class="control-label">操作：</label>
+                <input type="text" class="form-control"/>
+              </div>
+              <div class="form-group col-footer"><button class="btn btn-primary">提交</button><button class="btn btn-default">取消</button></div>
+            </form> 
+
+
+
+       </div>
+      </div><!--toolbar end-->
+
+      <!--table内容-->
+      <table class="table table-striped" id="table"
+             data-url="http://issues.wenzhixin.net.cn/examples/bootstrap_table/data" 
+             data-height=""
+             data-click-to-select="true"
+             data-pagination="true"
+             data-side-pagination="server"
+             data-page-list="[10, 20, 50, 100, 200]"
+             data-search="true"
+             data-show-refresh="true"
+             data-show-toggle="true"
+             data-show-columns="true"
+             data-toolbar="#toolbar"
+             data-sort-name="name" 
+             data-sort-order="asc">
+        <thead>
+          <tr>
+            <th data-field="state" data-checkbox="true"></th>
+            <th data-field="id" data-sortable="true" width="">Item ID</th>
+            <th data-field="name" data-sortable="true" data-sorter="startSorter" width="">Item Name</th>
+            <th data-field="price" data-sortable="true" width="">Item Price</th>
+            <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    
+
+
+    
+
+  </div><!--main-end-->
+</div><!--wrapper-end-->
+<!--底部-->
+<div class="footer"><p><a href="#">link1</a><a href="#"></a><a href="#"></a></p></div>
+<!--模态-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题 </h4>
+      </div>
+      <div class="modal-body">文本</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div> 
+</div>
+<!--顶部加载进度条-->
+<div id="progressBar"><span></span></div>
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--图表-->
+<script src="../libs/echarts/echarts.min.js"></script>
+<script src="../libs/echarts/theme/shine.js"></script>
+<script src="../libs/echarts/theme/happy.js"></script>
+<script>
+//操作列方法
+function actionFormatter(value, row, index) {
+    return [
+        '<a class="label label-success like" href="javascript:void(0)" title="Like">',
+        '<i class="glyphicon glyphicon-heart"></i>',
+        '收藏',
+        '</a>',
+        '<a class="label label-info ml" href="javascript:void(0)" title="Edit">',
+        '<i class="glyphicon glyphicon-edit"></i>',
+        '修改',
+        '</a>',
+        '<a class="label label-danger remove ml" href="javascript:void(0)" title="Remove">',
+        '<i class="glyphicon glyphicon-remove"></i>',
+        '删除',
+        '</a>'
+    ].join('');
+}
+window.actionEvents = {
+    'click .like': function (e, value, row, index) {
+        alert('You click like icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .edit': function (e, value, row, index) {
+        alert('You click edit icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    },
+    'click .remove': function (e, value, row, index) {
+        alert('You click remove icon, row: ' + JSON.stringify(row));
+        console.log(value, row, index);
+    }
+};
+
+$(document).ready(function(){
+  //下拉菜单
+  $(".selectpicker").selectpicker;
+  //table
+  $('#table').bootstrapTable({
+      //data: data
+      url:"http://issues.wenzhixin.net.cn/examples/bootstrap_table/data",
+      pageSize: 20,
+      //table loading
+      formatLoadingMessage: function () {
+        return "<span class='glyphicon glyphicon-refresh glyphicon-animate'></span>";
+      }      
+  });
+
+  function startSorter(a,b){
+    if (a < b) return 1;
+    if (a > b) return -1;
+    return 0;
+  };
+  //时间datatimepicker
+  $("#datetimepicker1").datetimepicker();
+  //collapse.close
+  $(".collapse .close").click(function(){
+    $(this).parent().removeClass("in")
+  });
+
+
+
+
+
+
+
+
+})
+</script>
+</body>
+</html>
+

@@ -1,0 +1,143 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*组件化*/
+.dropdown-menu li{ color: #333;}
+/*title*/
+.navbar-right{ padding-right: 20px;}
+.navbar-inverse .navbar-nav>li>a{ color: #fff;}
+nav.navbar-inverse{ background-color: #21252e; border: none;}
+.navbar-brand{ display: inline-block; font-size: 20px; width: 200px;}
+.navbar-inverse .navbar-brand,.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover { color: #52cbeb;}
+.toggleMenu{color: #fff;margin-top: 5px;font-size: 20px;}
+.wrapper{ width: 100%; padding-top: 50px; padding-bottom: 60px; min-height: 100%;}
+.title{ color: #bdbdbd;  border-bottom: 1px solid #59627c; line-height: 30px; }
+.sideMenu{ width:200px; min-height:100% !important; background:#2d3341; position: fixed; top: 0px; padding: 50px 0px 50px; }
+.sideMenu ul{ padding-top: 20px;}
+.sideMenu li a{color: #ccc; font-size: 14px; display:block; line-height:30px; padding:10px 20px 10px 10px; position: relative;}
+.sideMenu li a span.glyphicon{ margin-right: 10px;}
+.sideMenu li a i{ font-size:12px; position: absolute; right: 10px;top: 20px;}
+.sideMenu ol{ display: none; background-color: #252a35; border-bottom: 1px solid #404859;}
+.sideMenu ol a{ padding-left: 30px;}
+.sideMenu li.active a, .sideMenu li:hover a{ color: #fff; background-color: #292c3b;}
+.sideMenu li.active ol{ display: block;}
+.main{width: 100%; padding: 10px 20px; padding-left:220px;}
+/*响应式导航*/
+@media( max-width:767px){
+ .main{ padding-left: 20px!important;}
+ .sideMenu{ width: 100%; min-height: auto!important; display: none; z-index: 100;}
+ .toggleMenu{ float: right; margin-right: 10px;}
+}
+
+.footer{ width: 100%; height: 50px; position:absolute; bottom: 0px; left: 0px; background:#21252e; }
+/*select样式重置*/
+.bootstrap-select>.dropdown-toggle.bs-placeholder{ color: #333; border-radius: 4px;}
+.dropdown-menu{ z-index: 1030;}
+.input-group-btn:last-child>.btn{ border-radius: 4px;}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover{ background-color:#52cbeb;}
+.input-group-btn:last-child>.btn{background-color:#373e51; border: none; color: #fff;}
+.bootstrap-select.open>.dropdown-toggle.btn-default:focus,.bootstrap-select.open>.dropdown-toggle.btn-default:hover{ background-color: #000; color: #fff}
+.dropdown-menu li.dropdown-header{ color: #777;}
+/*table*/
+.fixed-table-container{border: none;border-top: 2px solid #292c3b;}
+.bootstrap-table .table thead>tr>th{ color: #52cbeb; }
+.bootstrap-table .table thead>tr>th,.bootstrap-table .table tbody>tr>td{ border-left: 1px solid #292c3b; border-bottom: 1px solid #292c3b;}
+.bootstrap-table .table tbody>tr:hover{ background-color:#2f3241;}
+.bootstrap-table .table tbody>tr>td{ color: #fff;}
+.fixed-table-container tbody .selected td{ background-color:#2f3241;}
+/*table-toolbar*/
+.fixed-table-toolbar{background-color: #292c3b;}
+.fixed-table-toolbar .bs-bars{ margin: ;}
+.fixed-table-toolbar .bs-bars .input-group,.fixed-table-toolbar .bs-bars .btn{ }
+/*table-loading*/
+.fixed-table-loading{ background-color: rgba(55, 62, 81, 0.87);}
+.fixed-table-loading .glyphicon-animate {
+	display: block;
+	font-size: 20px;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-top:-10px;
+    margin-left: -10px;
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+/*时间选择*/
+.date .form-control{ background-color: #373e51; color: #fff; border-color: #373e51;} 
+.bootstrap-datetimepicker-widget{ display: block;}
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{ background-color:#52cbeb; }
+/*search*/
+.search .form-control,.input-group-addon{ color: #fff; background-color:#373e51; border:none;}
+.search:hover .form-control,.search:hover .input-group-addon{ color: #fff; background-color: #000;}
+/*分页*/
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {background-color: #373e51;
+    color: #52cbeb; border-color: #292c3b;}
+.pagination>li>a, .pagination>li>span{ color: #fff; background-color: #373e51;border: 1px solid #292c3b;}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover{background-color: #373e51;
+    border-color: #292c3b; color: #fff;}
+.fixed-table-pagination{ color: #fff; padding: 0px 10px;}
+/*button*/
+.btn-default{ color: #fff; background-color: #373e51; border-color:#373e51; }
+.btn-default:hover{ color: #fff; background-color: #000; border-color: #000; }
+.btn-primary{ background-color:#52cbeb; border-color:#52cbeb;}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{ background-color:#52cbeb; border-color:#52cbeb;}
+.btn-link{ color: #52cbe1; }
+.btn-link:hover{ color: #52cbe1;}
+.btn-link:focus{ color: #52cbe1;}
+.btn-nobg{ background-color: transparent; border: none;}
+.btn-nobg:hover{ color: #fff; background-color: transparent; border: none;}
+.btn-blue{ background-color:#52cbeb; }
+/*折叠*/
+.collapse{ color: #fff;}
+.collapse.in{}
+/*模态框*/
+.modal-footer .btn-default{ color: #333; background-color: #fff; border-color: #ccc;}
+/*tab菜单*/
+.tab-content>.active{ color: #fff;}
+
+/*顶部加载进度条*/
+#progressBar{ 
+	position: fixed;
+	top:0px;
+	z-index: 1031;
+	height: 2px;
+	background:#2085c5;
+	transition:opacity 500ms linear;
+}
+#progressBar.done{
+	opacity: 0;
+}
+#progressBar span{
+	position: absolute;
+	right: -10px;
+	width: 150px;
+	height: 2px;
+	opacity: 1;
+	-webkit-box-shadow:#2085c5 1px 0 6px 1px;
+	-webkit-border-radius:100%;
+	-webkit-animation:pulse 2s ease-out 0s infinite;
+}
+@-webkit-keyframes pulse{
+	30% {
+		opacity: .6;
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		opacity: .6;
+	}
+}
+

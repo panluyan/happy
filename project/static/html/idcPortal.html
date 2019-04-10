@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<!--switch插件-->
+<link href="../libs/switch/bootstrapSwitch.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<!--主题色-->
+<link title="white" href="../css/baseWhite.css" rel="stylesheet">
+<link title="white" href="../css/styleWhite.css" rel="stylesheet">
+<link title="white" href="../css/menu.css" rel="stylesheet">
+<link title="white" href="../css/echart.css" rel="stylesheet">
+<title>idc-home</title>
+<style type="text/css">
+.wrapper{ padding-top: 0px;}
+.main{ padding-left: 20px !important;}
+#sideMenu{ display: none !important; }
+.portal-box{ margin-top: 20px;}
+.portal-box li{ padding: 20px; text-align: center;}
+.portal-box li .item{ width: 420px; height: 500px; padding: 80px; display:inline-block; text-align: center; background-color: #fff;  border-radius: 5px; 
+	transition: transform 1s;
+  -webkit-transition: transform 1s; /* Safari */}
+.portal-box li .item  h3{ font-size: 24px; color: #000; margin:50px auto;}
+.portal-box li .item  p{ font-size: 18px; color: #777; line-height: 30px; }
+.portal-box li:hover .item{ box-shadow: 0px 0px 30px #ccc;
+	 position: relative; z-index: 2;
+-ms-transform:scale(1.2); /* IE 9 */
+-webkit-transform: scale(1.2); /* Safari */
+transform: scale(1.2); /* 标准语法 */
+}
+.a-link{ text-align: center; margin-top: 90px; position: relative;}
+.a-link a::before{ display: block; content: ' '; position: absolute; width: 300px; height: 100px; background-color: #eee5ee; z-index: -1; top: -10px; left: 50%; margin-left: -150px; border-radius: 50px;}
+.a-link a{ font-size: 24px; color: #fff; width:280px; height: 80px; line-height: 80px; display: inline-block; border-radius: 50px; letter-spacing: 3px;
+background: -webkit-linear-gradient(90deg,#d71f7d, #5390e9);
+background: -o-linear-gradient(90deg,#d71f7d, #5390e9);
+background: -moz-linear-gradient(90deg,#d71f7d, #5390e9);	
+background: linear-gradient(90deg,#d71f7d, #5390e9);
+}
+.a-link a span{ margin-left: 5px;}
+</style>
+</head>
+<body>
+
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">2222</a></li>
+            <li><a href="">3333</a></li>
+          </ol>
+      </li>
+      <!--<li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>-->
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main"> 
+
+	<div class="portal-box">
+	  <ul class="row">
+	  	<li class="col-sm-6 col-md-4"> 
+	  	  <a class="item" href="#">
+		  	  <img src="../images/search.png"/>
+					<h3>带外日志查询</h3>
+			 	  <p class="text">交互式实时日志流，多个搜索条件过滤结果，支持多种格式导出</p>
+		 	  </a>
+		 	</li>  
+		 	<li class="col-sm-6 col-md-4">
+		 		<a class="item" href="#">
+			 	  <img src="../images/action.png"/>
+			 		<h3>设备带外操作</h3>
+			 	  <p class="text">一键执行带外管理操作，可追溯的历史操作</p>
+		 	  </a>
+		 	</li> 
+		 	<li class="col-sm-6 col-md-4"> 
+			 	<a class="item" href="#">
+			 		<img src="../images/alarm.png"/>
+					<h3>设备状态可视化</h3>
+			 	  <p class="text">设备运行状态、告警事件、BMC服务状态等信息实时查看</p>
+			 	</a>
+		 	</li> 
+	  </ul> 
+
+		<div class="a-link"><a href="#">查看设备状态<span class="glyphicon glyphicon-arrow-right"></span></a></div>   
+	</div>
+        
+
+
+  </div><!--main-end-->
+</div><!--wrapper-end-->
+   

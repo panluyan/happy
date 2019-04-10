@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-select.min.css" rel="stylesheet">
+<!--switch插件-->
+<link href="../libs/switch/bootstrapSwitch.css" rel="stylesheet">
+<link href="../css/bootstrap-table.min.css" rel="stylesheet">
+<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<!--主题色-->
+<link title="white" href="../css/baseWhite.css" rel="stylesheet">
+<link title="white" href="../css/styleWhite.css" rel="stylesheet">
+<link title="white" href="../css/menu.css" rel="stylesheet">
+<link title="white" href="../css/echart.css" rel="stylesheet">
+<title>可视化—CRC</title>
+<style type="text/css">
+.sub-title{font-size: 20px; color: #000; line-height: 30px; padding: 10px;}
+.sub-title span{ font-size: 14px; color: #999; margin-left: 20px; }
+/*.num-lists h5{background: #59c4e6;}*/
+.num-lists li.item{ margin-right: 10px; margin-bottom: 10px;}
+.num-lists li.item:last-child{ margin-right: 0px;}
+.num-lists span{ font-family: "Microsoft YaHei"; font-size: 28px;}
+
+.chart{ height: 400px;}
+.chart > div:nth-child(2){ max-height:500px; min-width: 110px; max-width: 400px; overflow: auto;}
+.formBox{ box-shadow: none; }
+.fixed-table-container{ padding-bottom: 20px !important; box-shadow: none;}
+.bootstrap-table .table>tbody>tr>td{ padding:8px !important;}
+.table thead tr th {background: #f0f3f4 !important;}
+/*.pull-left.pagination-detail{display:none;}*/
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top header clearfix" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand"><strong>HAPPY</strong></a>
+    <div class="nav navbar-nav">
+      <button class="btn btn-nobg toggleMenu" id="toggleMenu">
+         <span class="glyphicon glyphicon-align-justify"></span>
+      </button>
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="glyphicon glyphicon-link"></span>
+      </button>      
+      <!--右侧菜单收缩-->      
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav navbar-main">
+      <li><a href="#">产品1</a></li>
+      <li><a href="#">产品2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="styles">
+      <li><a href="#">link1</a></li>
+      <li><a href="#">link2</a></li>
+    </ul>
+  </div>
+</nav>
+<!--content-->
+<div class="wrapper">
+  <!--左侧菜单导航-->
+	<div class="sideMenu" id="sideMenu">
+		<ul>
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>总览</a></li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-retweet"></span>资源利用率<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">1</a></li>
+          </ol>
+      </li>
+		  <li><a href="#">
+            <span class="glyphicon glyphicon-blackboard"></span>大屏监控<i class="glyphicon glyphicon-menu-right"></i>
+          </a>
+          <ol>
+            <li><a href="">1</a></li>
+            <li><a href="">2222</a></li>
+            <li><a href="">3333</a></li>
+          </ol>
+      </li>
+      <!--<li><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></li>-->
+		</ul>
+    <div class="toTop"><a href="#"><span class="glyphicon glyphicon-circle-arrow-up"></span>返回顶部</a></div>
+  </div>
+  <!--主要内容-->
+  <div class="main" id="main">
+    <div class="title">可视化—CRC</div>
+    <!--搜索条件-->
+    <div class="form-inline formBox">
+      <div class="input-group">
+        <select class="selectpicker"  data-live-search="true" title="搜索IP">         
+          <option>1.71.151.254</option>
+          <option>1.180.19.126</option>
+          <option>1.194.226.126</option>
+          <option>10.16.128.1</option>
+          <option>10.16.128.11</option>
+          <option>10.17.128.34</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <select class="selectpicker"  data-live-search="true" title="搜索端口">         
+          <option>FortyGigE10/0/19</option>
+          <option>FortyGigE10/0/20</option>
+          <option>FortyGigE10/0/21</option>
+          <option>FortyGigE10/0/22</option>
+          <option>FortyGigE10/0/23</option>
+          <option>FortyGigE10/0/24</option>
+        </select>
+      </div>
+      <!-- 时间选择插件 -->
+      <div class="pull-right">
+        <!--时间快捷键-->
+        <div class="input-group" style="width:120px">
+          <select class="selectpicker" title="时间快捷范围">
+                <option>最近一天</option>
+                <option>最近一周</option>                
+                <option>最近一个月</option>
+                <option>最近一个季度</option>
+                <option>最近一年</option>    
+          </select>
+        </div>
+        <!--时间选择-->
+        <div class="input-group date" id="datetimepicker1">
+         <input type="text" class="form-control" placeholder="开始时间"/>
+         <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+         </span>
+        </div>
+        <span>TO</span>
+        <div class="input-group date" id="datetimepicker2">
+          <input type="text" class="form-control" placeholder="结束时间"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!--看板-->
+    <div class="num-lists">
+      <ul>
+        <li class="item"><h5>业务线</h5> <p><span>业务线</span></p> </li>
+        <li class="item"><h5>机房</h5>   <p><span>雅加达DCI</span></p> </li>
+        <li class="item"><h5>POD</h5>    <p><span>POD001</span></p> </li>
+        <li class="item"><h5>角色</h5>   <p><span>T0</span></p> </li>
+        
+      </ul>
+    </div>
+    <!--echart图表-->
+    <div class="bgWhite">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="chart" id="chart"></div>
+        </div>
+      </div>
+    </div>
+    <!--table-->
+    <div class="bgWhite">
+      <h5 class="sub-title">当前IP所有端口的增量值排名</h5>
+      <table class="table table-hover"  data-pagination="true"
+        data-show-export="true"
+        >
+        <thead>
+          <th data-sortable="true">端口</th>
+          <th data-sortable="true">最新增量值</th>
+          <th data-sortable="true">峰值</th>
+          <th data-sortable="true">峰值时间点</th>
+          <th data-sortable="true">对端端口</th>
+        </thead>
+        <tbody>
+          <tr><td><a href="#">FortyGigE10/0/19</a></td> <td></td> <td></td> <td></td> <td><a href="#">172.19.32.1:port-channel519</a></td></tr>
+          <tr><td><a href="#">FortyGigE10/0/20</a></td> <td></td> <td></td> <td></td> <td><a href="#">172.19.32.1:port-channel603</a></td></tr>
+          <tr><td><a href="#">FortyGigE10/0/21</a></td> <td></td> <td></td> <td></td> <td><a href="#">172.19.32.1:port-channel708</a></td></tr>
+        </tbody>  
+      </table>
+    </div>
+    
+
+    
+
+  </div><!--main-end-->
+</div><!--wrapper-end-->
+
+
+<!--js文件-->
+<script src="../js/jquery-1.11.3.min.js"></script>   
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-table-export.min.js"></script>
+<script src="../js/bootstrap-table-resizable.js"></script>
+<script src="../js/colResizable-1.6.min.js"></script>
+
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/reset.js"></script>
+<!--switch插件-->
+<script src="../libs/switch/bootstrapSwitch.js"></script>
+<!--图表-->
+<script src="../libs/echarts/echarts.min.js"></script>
+<!--图表色彩主题-->
+<script src="../libs/echarts/theme/westeros2.js"></script>
+
+<script> 
+$(function(){  
+  //时间datatimepicker
+  $("#datetimepicker1").datetimepicker();
+  $("#datetimepicker2").datetimepicker();
+  //下拉菜单
+  $(".selectpicker").selectpicker();
+  //table列表配置   
+  $('.table').bootstrapTable({
+    exportTypes:['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'png', 'pdf'],
+    // pagination: true,
+    pageSize: 10,
+    pageNumber: 1,
+    // height: 300,
+    export: true,
+    resizable: true,
+    sortable : true,
+
+
+  });
+
+  //echart图表配置
+  var dom=document.getElementById('chart');
+  //(2):简单方式，theme的js文件引入方式,js文件里面已经封装好的相对应的theme主题name名称
+  var chart1=echarts.init(dom,'westeros2');  
+
+  var timeData=['00:00:00','01:02:00','02:04:00','12:06:00','12:08:00','12:10:00','12:12:00','12:14:00','12:16:00','12:18:00'];
+  
+  var formaTooltip= function(params, ticket, callback) {
+    var htmlStr= '';  
+    for(var i=0;i<params.length;i++){
+      var param = params[i];
+      var xName = param.name;//x轴的名称
+      var seriesName = param.seriesName;//图例名称
+      var value = param.value;//y轴值
+      var color = param.color;//图例颜色
+      //title设置
+      if(i===0 ){ 
+        htmlStr += xName + '<br/>'; //x轴的名称
+      }
+      htmlStr +='<p>';
+      //为了保证和原来的效果一样，这里自己实现了一个点的效果
+      htmlStr += '<span style="margin-right:5px;display:inline-block;width:10px;height:10px;border-radius:5px;background-color:'+color+';"></span>';
+      //圆点后面显示的文本
+      htmlStr += seriesName + '：' + '<span style="display:inline-block; width: 60px; text-align:right;">'+ value ;
+
+      //特殊情况下，只需要增加特殊部分单位mil
+      if(i===1){ 
+        htmlStr +='Mil';    
+      }
+      
+      htmlStr += '</span></p>';
+
+    };
+      
+    return htmlStr;
+  };
+
+  var option1 ={
+    title: {
+        show: true,
+        top:10,
+        text: '增量值&累计值',
+        left: 'center'
+    },
+    legend: {
+       top:60,
+       right: 30,
+       orient: 'vertical',
+       data:['增量值','累计值', '告警数据', '恢复告警'],
+     },
+    //小工具
+    toolbox:{
+      top: 10,
+      right:40,
+      feature:{
+        restore: {},
+        saveAsImage:{},
+        // magicType: {
+        //         type: ['line', 'bar']
+        // },  
+      }
+    },
+    //提示框
+    tooltip : {
+        trigger: 'axis',
+        enterable: true, //允许鼠标进入tooltip里面
+        formatter: formaTooltip
+    },
+    // //设置关联tooltip的范围
+    // axisPointer: {
+    //     // triggerTooltip: true,
+    //     link: {
+    //       xAxisIndex: [0, 1] //{只能作用x轴，xAxisIndex: 'all'}
+    //     } 
+    // },
+    //区域缩放轴组件
+    dataZoom: [
+       {   
+          type: 'slider', //默认为slider,通过拖拽缩放轴
+          show: true,
+          realtime: true,
+          start: 0, //设置开始
+          end: 100,
+        },
+        {   
+          type: 'inside', //缩放方式是通过滚动鼠标缩放
+          show: true,
+          realtime: true,
+          start: 0, //设置开始
+          end: 100,
+        },   
+    ],
+    //直角坐标系内绘图网格
+    grid:{
+      left:20,
+      right:160,
+      containLabel: true, //允许包括坐标轴的数值
+    },
+    xAxis: {
+        type: 'category', //time category
+        boundaryGap : false, //控制坐标轴两边是否留白
+        axisLine: {
+          onZero: true
+        },    
+        data: timeData,
+        // axisLabel:{
+        //   rotate: 30,//设置标签倾斜度
+        // }, 
+    },
+    yAxis: [
+        {
+            type: 'value',
+            name:'增量值',
+            nameLocation:'end', //end,start,middle,center
+            nameGap:15, //与坐标轴的距离
+            min: -1.0,
+            max: 1.0,
+            splitNumber:4, //分割段数
+            interval:0.5, //实际数据每段间隔的数值
+            nameTextStyle: { //y轴名称的文字样式。
+              color: '#333'
+            }
+        },
+        {
+            type: 'value',
+            name:'累计值',
+            nameLocation:'end',
+            nameGap:15,
+            min: 25,
+            max: 45,
+            splitNumber:4, //分割段数
+            interval:5,
+            axisLabel:{
+              formatter:'{value}Mil'
+            },
+            nameTextStyle: { //y轴名称的文字样式。
+              color: '#333'
+            }
+        },
+        {   
+            gridIndex: 0, //y轴默认设置为0，y轴设置使用哪个grid
+            // name: '告警',
+            type: 'value',
+            max: 1,
+            // interval: 3,
+            axisLine:{  //y轴刻度线的样式
+              show: false
+            },
+            axisLabel: { //y轴刻度值的样式
+              show: false,
+            }, 
+            splitLine: { //坐标轴在grid区域中的分隔线。
+              show: false
+            },
+            nameTextStyle: { //y轴名称的文字样式。
+              color: '#fff'
+            }   
+        }
+
+    ],
+    series : [
+      {
+        name:'增量值',
+        type: 'line',
+        areaStyle: {}, 
+        symbol:'none', //默认'emptyCircle', 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+        symbolSize: 10,
+        yAxisIndex: 0,       
+        data: [ 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0 ],
+      },
+      {
+        name:'累计值',
+        type: 'line',
+        areaStyle: {}, 
+        symbol:'none', //默认'emptyCircle', 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+        symbolSize: 10,  
+        yAxisIndex: 1,     
+        data: [ 34, 34, 34, 34, 34, 34, 34, 34, 34, 34 ],
+      },
+      //告警
+      {
+            name:'恢复告警',
+            type:'effectScatter',
+            symbol:'none',
+            symbolSize:15,
+            yAxisIndex: 2,//2
+            hoverAnimation: false,
+            itemStyle:{
+              normal:{ 
+                color:'#00d27591',
+              }
+            },
+            tooltip:{
+              trigger: 'item',
+              // triggerOn: 'click',
+              position: function(point, params, dom, rect, size){
+                  //其中point为当前鼠标的位置
+                  return [point[0]+10, 0];
+              },
+              formatter: function (params) {
+                var color = params.color;//图例颜色
+                var htmlStr ='<div>';
+                htmlStr += params.name +'<br/>';//x轴的名称  
+                //为了保证和原来的效果一样，这里自己实现了一个点的效果
+                htmlStr += '<span style="margin-right:5px;display:inline-block;width:10px;height:10px;border-radius:5px;background-color:'+color+';"></span>';
+
+                //添加一个汉字，这里你可以格式你的数字或者自定义文本内容
+                htmlStr += params.seriesName + '条数：' + '2' ;//+ '<p>'
+
+                htmlStr +='<p>'+'1：10.233.33.3, 10GE1/0/44, out流量：7770.51Mbps,带宽使用率：77.71%, 大于阈值75.0%, 5分钟内出现1次' + ' <a href="http://idc.jd.com/ld/monitor/demo/" target="_blank"> ' + '查看告警详情页' + '</a></p>';
+                htmlStr +='<p>'+'2：10.233.33.3, 10GE1/0/44, out流量：7770.51Mbps,带宽使用率：77.71%, 大于阈值75.0%, 5分钟内出现1次' + ' <a href="http://idc.jd.com/ld/monitor/demo/" target="_blank"> ' + '查看告警详情页' + '</a></p>';
+                htmlStr +='</div>';
+                return htmlStr;
+              },
+            },
+            label:{
+              show: false,
+              formatter: '恢复',//{c}
+            },
+            data:[
+                0,
+                { "value":0.9, "name": "恢复", "symbol": "circle", },
+                0,0,0,0,
+                { "value":0.9, "name": "恢复", "symbol": "circle", },
+                0,0,0,
+            ],
+      },
+      {
+          name:'告警数据',
+          type:'effectScatter',//effectScatter/scatter
+          symbol:'none',
+          symbolSize:15,
+          xAxisIndex: 0,
+          yAxisIndex: 2,
+          hoverAnimation: false,
+          itemStyle:{
+            normal:{ 
+              color:'#c3030391',
+            }
+          },
+          tooltip:{
+            trigger: 'item',
+            // triggerOn: 'click',
+            position: function(point, params, dom, rect, size){
+                //其中point为当前鼠标的位置
+                return [point[0]+10, 0];
+            },
+            formatter: function (params) {
+              var color = params.color;//图例颜色
+              var htmlStr ='<div>';
+              htmlStr += params.name +'<br/>';//x轴的名称 
+
+              //为了保证和原来的效果一样，这里自己实现了一个点的效果
+              htmlStr += '<span style="margin-right:5px;display:inline-block;width:10px;height:10px;border-radius:5px;background-color:'+color+';"></span>';
+
+              //添加一个汉字，这里你可以格式你的数字或者自定义文本内容
+              htmlStr += params.seriesName + '条数：'+ '1';
+
+              htmlStr +='<p>'+'1：10.233.33.3, 10GE1/0/44, out流量：7770.51Mbps,带宽使用率：77.71%, 大于阈值75.0%, 5分钟内出现1次' + ' <a href="http://idc.jd.com/ld/monitor/demo/" target="_blank"> ' + '查看告警详情页' + '</a></p>';
+
+              htmlStr +='</div>';
+              return htmlStr;
+            },
+          },
+          label:{
+            show: false,
+            formatter: '告警',//{c}
+          },
+          data:[
+              0,
+              { "value":1, "name": "告警", "symbol": "circle", },
+              0,0,0,0,0,
+              { "value":1, "name": "告警", "symbol": "circle", },
+              0,0,
+          ],          
+      },
+    ]
+
+  };  
+  // chart1.showLoading();
+  chart1.setOption(option1);
+
+  // chart1.hideLoading();
+  window.addEventListener("resize", function() {
+      chart1.resize();
+  });
+
+  $("#toggleMenu").click(function(){
+    chart1.resize(); 
+    //echarts.init(document.getElementById('inout-chart'), 'westeros2').resize();  
+  }); 
+ 
+  //控制tooltip可悬浮滚动
+  $(".chart > div:nth-child(2)").hover(function(){
+    $(this).show();
+  });
+
+
+});
+</script>
+
+</body>
+</html>
+  
+     
